@@ -1,0 +1,20 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"*.html": "html"
+		},
+		"tailwindCSS.emmetCompletions": true,
+		"tailwindCSS.includeLanguages": {
+			"plaintext": "html"
+		},
+		"tailwindCSS.classAttributes": [
+			"class",
+			"className"
+		]
+	}
+}

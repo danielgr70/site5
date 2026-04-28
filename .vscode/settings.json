@@ -1,0 +1,19 @@
+{
+  "editor.quickSuggestions": {
+    "strings": "on"
+  },
+  "editor.colorDecorators": true,
+  "files.associations": {
+    "*.html": "html"
+  },
+  "tailwindCSS.validate": true,
+  "tailwindCSS.colorDecorators": true,
+  "tailwindCSS.emmetCompletions": true,
+  "tailwindCSS.includeLanguages": {
+    "plaintext": "html"
+  },
+  "tailwindCSS.classAttributes": [
+    "class",
+    "className"
+  ]
+}

@@ -1,0 +1,36 @@
+import { setupSubscribeConsent } from "./modules/consent.js";
+import { setupMobileNav } from "./modules/nav.js";
+import { setupOfertaModal } from "./modules/modal.js";
+import { setupAjaxForms } from "./modules/forms.js";
+import { setupCookieBanner } from "./modules/cookie.js";
+import { setupCountdown } from "./modules/countdown.js";
+import { setupSmoothScroll } from "./modules/smoothScroll.js";
+import { setupResizeBehavior } from "./modules/resize.js";
+import { setupUiEnhancements } from "./modules/uiEnhancements.js";
+import { setupBackgroundBasics } from "./modules/backgroundBasics.js";
+import { setupSeparateBackgroundSafe } from "./modules/backgroundSeparateSafe.js";
+import { setupMap } from "./modules/map.js";
+import { getScrollBarWidth } from "./modules/scrollbar.js";
+import { setupEffectsInit } from "./modules/effectsInit.js";
+import { setupMagnificPopup } from "./modules/magnific.js";
+import { setupOwlCarousel } from "./modules/owl.js";
+import { setupBackgroundLegacy } from "./modules/backgroundLegacy.js";
+
+document.addEventListener("DOMContentLoaded", function () {
+    setupSubscribeConsent();
+    setupMobileNav();
+    setupOfertaModal();
+    setupAjaxForms();
+    setupCookieBanner();
+    setupCountdown();
+    setupSmoothScroll();
+    setupResizeBehavior();
+    setupUiEnhancements();
+    setupBackgroundBasics();
+    setupSeparateBackgroundSafe();
+    setupMap();
+    setupEffectsInit();
+    setupMagnificPopup(getScrollBarWidth);
+    setupOwlCarousel();
+    setupBackgroundLegacy();
+});
