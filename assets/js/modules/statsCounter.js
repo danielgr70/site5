@@ -1,6 +1,7 @@
 export function setupStatsCounter() {
     const counters = Array.from(document.querySelectorAll(".stats-counter"));
     if (!counters.length) return;
+    const rafByElement = new WeakMap();
 
     const animateCounter = (el) => {
         const target = Number(el.dataset.target || "0");
@@ -17,13 +18,24 @@ export function setupStatsCounter() {
             el.textContent = String(value) + suffix;
 
             if (progress < 1) {
-                requestAnimationFrame(step);
+                const rafId = requestAnimationFrame(step);
+                rafByElement.set(el, rafId);
             } else {
                 el.textContent = String(target) + suffix;
+                rafByElement.delete(el);
             }
         };
 
-        requestAnimationFrame(step);
+        const existingRaf = rafByElement.get(el);
+        if (existingRaf) {
+            cancelAnimationFrame(existingRaf);
+            rafByElement.delete(el);
+        }
+
+        // Always restart from zero when element re-enters viewport
+        el.textContent = "0" + suffix;
+        const rafId = requestAnimationFrame(step);
+        rafByElement.set(el, rafId);
     };
 
     if (!("IntersectionObserver" in window)) {
@@ -34,13 +46,24 @@ export function setupStatsCounter() {
     const observer = new IntersectionObserver(
         (entries) => {
             entries.forEach((entry) => {
-                if (!entry.isIntersecting) return;
                 const el = entry.target;
-                if (el.dataset.animated === "true") return;
+                const suffix = el.dataset.suffix || "";
+                const target = Number(el.dataset.target || "0");
 
-                el.dataset.animated = "true";
-                animateCounter(el);
-                observer.unobserve(el);
+                if (entry.isIntersecting) {
+                    if (el.dataset.inView === "true") return;
+                    el.dataset.inView = "true";
+                    animateCounter(el);
+                    return;
+                }
+
+                el.dataset.inView = "false";
+                const rafId = rafByElement.get(el);
+                if (rafId) {
+                    cancelAnimationFrame(rafId);
+                    rafByElement.delete(el);
+                }
+                el.textContent = (Number.isFinite(target) ? "0" : "") + suffix;
             });
         },
         { threshold: 0.35 }
