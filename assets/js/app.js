@@ -15,6 +15,7 @@ import { setupEffectsInit } from "./modules/effectsInit.js";
 import { setupMagnificPopup } from "./modules/magnific.js";
 import { setupOwlCarousel } from "./modules/owl.js";
 import { setupBackgroundLegacy } from "./modules/backgroundLegacy.js";
+import { setupStatsCounter } from "./modules/statsCounter.js";
 
 document.addEventListener("DOMContentLoaded", function () {
     setupSubscribeConsent();
@@ -33,4 +34,5 @@ document.addEventListener("DOMContentLoaded", function () {
     setupMagnificPopup(getScrollBarWidth);
     setupOwlCarousel();
     setupBackgroundLegacy();
+    setupStatsCounter();
 });
