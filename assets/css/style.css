@@ -2600,6 +2600,55 @@ E. Template Specific Elements
         filter: drop-shadow(0 12px 24px rgba(15, 23, 42, 0.12));
     }
 
+.services-v1 {
+    background: #f8fafc;
+}
+
+.services-v1-subtitle {
+    max-width: 62ch;
+    margin: 0 auto;
+    color: #64748b;
+    font-size: .98rem;
+    line-height: 1.7;
+}
+
+#how-can-i-help-you .service-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 1.25rem;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
+    padding: 1.4rem 1.2rem 1.25rem;
+    transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+}
+
+#how-can-i-help-you .service-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 22px rgba(15, 23, 42, 0.10);
+    border-color: #cbd5e1;
+}
+
+#how-can-i-help-you .ts-item-header {
+    margin-bottom: 1rem;
+}
+
+#how-can-i-help-you .ts-item-header .icon img {
+    height: 58px;
+    width: auto;
+}
+
+#how-can-i-help-you .ts-item-body h4 {
+    font-size: 1.08rem !important;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: .55rem !important;
+}
+
+#how-can-i-help-you .ts-item-body p {
+    font-size: .92rem;
+    line-height: 1.65;
+    color: #475569;
+}
+
     .contenedor-scroll {
         /* Calculamos la altura: line-height * cantidad de líneas */
         line-height: 1.5em;
