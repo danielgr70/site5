@@ -16,6 +16,7 @@ import { setupMagnificPopup } from "./modules/magnific.js";
 import { setupOwlCarousel } from "./modules/owl.js";
 import { setupBackgroundLegacy } from "./modules/backgroundLegacy.js";
 import { setupStatsCounter } from "./modules/statsCounter.js";
+import { setupReviewsSection } from "./modules/reviewsSection.js";
 
 document.addEventListener("DOMContentLoaded", function () {
     setupSubscribeConsent();
@@ -35,4 +36,5 @@ document.addEventListener("DOMContentLoaded", function () {
     setupOwlCarousel();
     setupBackgroundLegacy();
     setupStatsCounter();
+    setupReviewsSection();
 });

@@ -322,106 +322,150 @@
             <!--end container-->
         </section>
 
-        <section id="my-products" class="ts-block">
-            <div class="max-w-7xl mx-auto px-4">
-
-                <div class="max-w-7xl mx-auto px-4 mt-5">
-                    <div class="flex items-center justify-center" style="gap: 20px; direction: rtl;">
-
-                        <div class="ts-title mb-5">
-                            <h2 class="mb-0">המוצרים שלי</h2>
-                        </div>
-                        
-                    </div>
-
-                    <div class="owl-carousel" data-owl-dots="1" data-owl-nav="1" data-owl-items="2" data-owl-margin="20">
-                        <div class="card">
-                            <img src="assets/img/mesarim.jpg" style="height: 570px; width: auto; object-fit: contain;" class="card-img" alt="">
-                            <div class="card-img-overlay text-white" data-bg-color="rgba(0,0,0,.3)">
-                                <div class="card-img-overlay flex flex-col justify-end items-center" style="padding-bottom: 40px;">
-                                    <div style="background: rgba(0, 0, 0, 0.6); padding: 20px; border-radius: 15px; max-width: 80%; text-align: center;">
-                                        <p class="card-text" style="font-size: 1.1rem; color: #fff; margin-bottom: 15px; line-height: 1.4;">
-                                            <b>מסרים של אור</b><br />
-                                            מארז יוקרתי לליווי והשראה.
-                                        </p>
-                                        <a href="https://lp.smoove.io/14ji" target="_blank" class="inline-flex items-center bg-white hover:bg-gray-100 text-gray-900 font-semibold px-4 py-2 rounded" style="border-radius: 25px; padding: 8px 25px; font-weight: bold; text-decoration: none;">
-                                            קרא עוד
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <img src="assets/img/mesarim.jpg" style="height: 570px; width: auto; object-fit: contain;" class="card-img" alt="">
-                            <div class="card-img-overlay text-white" data-bg-color="rgba(0,0,0,.3)">
-                                <div class="card-img-overlay flex flex-col justify-end items-center" style="padding-bottom: 40px;">
-                                    <div style="background: rgba(0, 0, 0, 0.6); padding: 20px; border-radius: 15px; max-width: 80%; text-align: center;">
-                                        <p class="card-text" style="font-size: 1.1rem; color: #fff; margin-bottom: 15px; line-height: 1.4;">
-                                            <b>מסרים של אור</b><br />
-                                            מארז יוקרתי לליווי והשראה.
-                                        </p>
-                                        <a href="https://lp.smoove.io/14ji" target="_blank" class="inline-flex items-center bg-white hover:bg-gray-100 text-gray-900 font-semibold px-4 py-2 rounded" style="border-radius: 25px; padding: 8px 25px; font-weight: bold; text-decoration: none;">
-                                            קרא עוד
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--end card-->
-                    </div>
-                    <!--end owl-carousel-->
+        <section id="my-products" class="ts-block products-v2 py-16 md:py-20">
+            <div class="max-w-7xl mx-auto px-4 text-center" dir="rtl">
+                <div class="ts-title mb-10 md:mb-12 pt-3">
+                    <h2 class="mb-3">המוצרים שלי</h2>
+                    <p class="products-v2-subtitle mx-auto mb-0">מארזים מעוצבים וכלים פרקטיים — השראה שממשיכה איתך גם אל מעבר לפגישה.</p>
                 </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 max-w-5xl mx-auto text-right" dir="rtl">
+                    <article class="products-v2-card" data-animate="ts-fadeInUp">
+                        <div class="products-v2-media">
+                            <img src="assets/img/mesarim-no-bg.png" class="products-v2-image" alt="מארז קלפים מסרים של אור על רקע נקי" loading="lazy">
+                        </div>
+                        <div class="products-v2-body">
+                            <p class="products-v2-kicker">מארז פרימיום</p>
+                            <h3 class="products-v2-title">מסרים של אור</h3>
+                            <p class="products-v2-desc mb-4">אריזה אלגנטית לליווי היום־יומי בהשראה עדינה — מתנה משמעותית לעצמך או למי שקרוב ללב.</p>
+                            <div class="products-v2-cta-row">
+                                <a href="https://lp.smoove.io/14ji" target="_blank" rel="noopener noreferrer" class="products-v2-btn-primary">פרטים והזמנה</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="products-v2-card" data-animate="ts-fadeInUp" data-delay="0.1s">
+                        <div class="products-v2-media">
+                            <img src="assets/img/setjalomi.png" class="products-v2-image" alt="סט ז׳אלומי אלקטרומגנטי מסדרת מסרים של אור" loading="lazy">
+                        </div>
+                        <div class="products-v2-body">
+                            <p class="products-v2-kicker">השלמה מושלמת לחוויה</p>
+                            <h3 class="products-v2-title">סט ז׳אלומי אלקטרומגנטיים</h3>
+                            <p class="products-v2-desc mb-4">הסט שממשיך את המסע — פריט פרקטי שמרגיש מיוחד ביד ומדויק לשימוש יומיומי.</p>
+                            <div class="products-v2-cta-row">
+                                <a href="#form-contact" class="products-v2-btn-primary ts-scroll">שאלו אותי</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!--
+                ארכיון — פריסת קרוסלת Owl (לפני products-v2). להחזיר: למחוק את בלוק ה-ts-title וה-grid למעלה, ולהפעיל את המבנה הנמוך מתוך ההערה (כולל ה-wrapper הכפול max-w-7xl שהיה בעבר).
+                    <div class="max-w-7xl mx-auto px-4">
+                        <div class="max-w-7xl mx-auto px-4 mt-5">
+                            <div class="flex items-center justify-center" style="gap: 20px; direction: rtl;">
+
+                                <div class="ts-title mb-5">
+                                    <h2 class="mb-0">המוצרים שלי</h2>
+                                </div>
+
+                            </div>
+
+                            <div class="owl-carousel" data-owl-dots="1" data-owl-nav="1" data-owl-items="2" data-owl-margin="20">
+                                <div class="card product-card-clean">
+                                    <img src="assets/img/mesarim-no-bg.png" class="card-img product-card-image" alt="">
+                                    <div class="card-img-overlay text-white product-card-overlay" data-bg-color="rgba(0,0,0,0)">
+                                        <div class="card-img-overlay flex flex-col justify-end items-center" style="padding-bottom: 26px;">
+                                            <div class="product-card-caption">
+                                                <p class="card-text" style="font-size: 1.1rem; color: #fff; margin-bottom: 15px; line-height: 1.4;">
+                                                    <b>מסרים של אור</b><br />
+                                                    מארז יוקרתי לליווי והשראה.
+                                                </p>
+                                                <a href="https://lp.smoove.io/14ji" target="_blank" class="inline-flex items-center bg-red-600 hover:bg-red-700 text-white font-semibold px-4 py-2 rounded-full transition-all duration-300 ease-in-out hover:shadow-md" style="border-radius: 25px; padding: 8px 25px; font-weight: bold; text-decoration: none;">
+                                                    קרא עוד
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card product-card-clean">
+                                    <img src="assets/img/setjalomi.png" class="card-img product-card-image" alt="">
+                                    <div class="card-img-overlay text-white product-card-overlay" data-bg-color="rgba(0,0,0,0)">
+                                        <div class="card-img-overlay flex flex-col justify-end items-center" style="padding-bottom: 26px;">
+                                            <div class="product-card-caption">
+                                                <p class="card-text" style="font-size: 1.1rem; color: #fff; margin-bottom: 15px; line-height: 1.4;">
+                                                    <b>מסרים של אור</b><br />
+                                                    הסט המושלם
+                                                </p>
+                                                <a href="#contact" class="inline-flex items-center bg-red-600 hover:bg-red-700 text-white font-semibold px-4 py-2 rounded-full transition-all duration-300 ease-in-out hover:shadow-md" style="border-radius: 25px; padding: 8px 25px; font-weight: bold; text-decoration: none;">
+                                                    שאל אותי
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                -->
             </div>
             <!--end container-->
         </section>
 
-        <section id="latest-courses" class="ts-block pb-0" data-bg-color="#faf9f6" style="direction: rtl;">
+        <section id="latest-courses" class="ts-block pb-0 events-grid-v1 py-14 md:py-16" style="direction: rtl;">
             <div class="max-w-7xl mx-auto px-4">
-                <div class="ts-title text-center">
-                    <h2>ארועים קרובים</h2>
+                <div class="ts-title text-center mb-8 md:mb-10">
+                    <h2 class="mb-3">אירועים קרובים</h2>
+                    <p class="events-grid-v1-subtitle mx-auto mb-0">סדנאות, וובינרים ומסלולים — איפה שניפגש הלאה.</p>
                 </div>
                 <!--end ts-title-->
-                <div class="grid grid-cols-12 gap-6 text-right">
-                    <div class="col-span-12 md:col-span-4">
-                        <div class="card ts-border-radius__lg" data-animate="ts-fadeInUp">
-                            <div class="card-img ts-height__300px" data-bg-image="assets/img/event1.png"></div>
-                            <div class="card-body">
-                                <strong class="ts-opacity__50">בקרוב</strong>
-                                <h4 class="mt-3">שיווק סדנאות בקלות</h4>
-                                <p>כל מה שצריך כדי למלא את הכיתה</p>
-                                <a href="https://bizlive.co.il/event/86594/" class="inline-flex items-center bg-red-600 hover:bg-red-700 text-white text-sm font-semibold px-3 py-2 rounded-full" target="_blank">להצטרפות</a>
+                <div class="grid grid-cols-12 gap-6 md:gap-7 items-stretch text-right">
+                    <div class="col-span-12 md:col-span-4 h-full min-h-0 flex">
+                        <div class="events-v1-card card ts-border-radius__lg w-full flex flex-col h-full mb-0" data-animate="ts-fadeInUp">
+                            <div class="card-img ts-height__300px shrink-0 bg-slate-200 bg-cover bg-center" data-bg-image="assets/img/event1.png"></div>
+                            <div class="events-v1-card-body card-body flex flex-col flex-grow min-h-0">
+                                <strong class="events-v1-date">בקרוב</strong>
+                                <h4 class="mt-3 events-v1-heading">שיווק סדנאות בקלות</h4>
+                                <p class="events-v1-desc">כל מה שצריך כדי למלא את הכיתה</p>
+                                <div class="events-v1-cta-wrap mt-auto pt-4 flex justify-start w-full">
+                                    <a href="https://bizlive.co.il/event/86594/" class="events-v1-cta inline-flex items-center bg-red-600 hover:bg-red-700 text-white text-sm font-semibold px-3 py-2 rounded-full transition-colors" target="_blank" rel="noopener noreferrer">להצטרפות</a>
+                                </div>
                                 <!--end ts-story-->
                             </div>
                         </div>
                     </div>
-                    <div class="col-span-12 md:col-span-4">
-                        <div class="card ts-border-radius__lg" data-animate="ts-fadeInUp">
-                            <div class="card-img ts-height__300px" data-bg-image="assets/img/event2.png"></div>
-                            <div class="card-body">
-                                <strong class="ts-opacity__50">מ-10.5.2026 במשך 4 חודשים</strong>
-                                <h4 class="mt-3">אינפיניטי-התוכנית לעסק מצליח</h4>
-                                <p>
+                    <div class="col-span-12 md:col-span-4 h-full min-h-0 flex">
+                        <div class="events-v1-card card ts-border-radius__lg w-full flex flex-col h-full mb-0" data-animate="ts-fadeInUp">
+                            <div class="card-img ts-height__300px shrink-0 bg-slate-200 bg-cover bg-center" data-bg-image="assets/img/event2.png"></div>
+                            <div class="events-v1-card-body card-body flex flex-col flex-grow min-h-0">
+                                <strong class="events-v1-date">מ-10.5.2026 במשך 4 חודשים</strong>
+                                <h4 class="mt-3 events-v1-heading">אינפיניטי-התוכנית לעסק מצליח</h4>
+                                <p class="events-v1-desc">
                                     התוכנית שבארבעה חודשים תמקד אותך לתוצאות רצויות
                                     דרך בניית אסטרטגיה אישית ויישום יד ביד
                                     לעסקים שמבינים שהגיע הזמן שישפיעו יותר
                                     להתחלת תהליך מרגש, שעובד
                                 </p>
-                                <a href="https://lp.smoove.io/19ws?=SITE" class="inline-flex items-center bg-red-600 hover:bg-red-700 text-white text-sm font-semibold px-3 py-2 rounded-full" target="_blank">להצטרפות</a>
+                                <div class="events-v1-cta-wrap mt-auto pt-4 flex justify-start w-full">
+                                    <a href="https://lp.smoove.io/19ws?=SITE" class="events-v1-cta inline-flex items-center bg-red-600 hover:bg-red-700 text-white text-sm font-semibold px-3 py-2 rounded-full transition-colors" target="_blank" rel="noopener noreferrer">להצטרפות</a>
+                                </div>
                                 <!--end ts-story-->
                             </div>
                         </div>
                     </div>
-                    <div class="col-span-12 md:col-span-4">
-                        <div class="card ts-border-radius__lg" data-animate="ts-fadeInUp">
-                            <div class="card-img ts-height__300px" data-bg-image="assets/img/event3.jpeg"></div>
-                            <div class="card-body">
-                                <strong class="ts-opacity__50">מ-10.5.2026 במשך 4 חודשים</strong>
-                                <h4 class="mt-3"> עד מתי העסק שלך יישאר בהישרדות ?</h4>
-                                <p>
-                                    בוובינר הזה תבינו מה באמת עוצר אתכם בעסק ,
+                    <div class="col-span-12 md:col-span-4 h-full min-h-0 flex">
+                        <div class="events-v1-card card ts-border-radius__lg w-full flex flex-col h-full mb-0" data-animate="ts-fadeInUp">
+                            <div class="card-img ts-height__300px shrink-0 bg-slate-200 bg-cover bg-center" data-bg-image="assets/img/event3.jpeg"></div>
+                            <div class="events-v1-card-body card-body flex flex-col flex-grow min-h-0">
+                                <strong class="events-v1-date">3.5.2026</strong>
+                                <h4 class="mt-3 events-v1-heading">עד מתי העסק שלך יישאר בהישרדות?</h4>
+                                <p class="events-v1-desc">
+                                    בוובינר הזה תבינו מה באמת עוצר אתכם בעסק,
                                     ולמה כל מה שעשיתם עד היום לא מצליח לייצר את הפריצה שאתם מחכים לה.
                                 </p>
-                                <a href="https://bizlive.co.il/event/87013/" class="inline-flex items-center bg-red-600 hover:bg-red-700 text-white text-sm font-semibold px-3 py-2 rounded-full" target="_blank">להצטרפות</a>
+                                <div class="events-v1-cta-wrap mt-auto pt-4 flex justify-start w-full">
+                                    <a href="https://bizlive.co.il/event/87013/" class="events-v1-cta inline-flex items-center bg-red-600 hover:bg-red-700 text-white text-sm font-semibold px-3 py-2 rounded-full transition-colors" target="_blank" rel="noopener noreferrer">להצטרפות</a>
+                                </div>
                                 <!--end ts-story-->
                             </div>
                         </div>
@@ -433,19 +477,22 @@
         </section>
         <!--END LATEST COURSES**** ******************************************************************************-->
         <!--SUCCESSFUL STORIES **********************************************************************************-->
-        <section id="successful-stories" class="ts-block" data-bg-color="#faf9f6">
+        <section id="successful-stories" class="ts-block reviews-section-v1 py-14 md:py-18" dir="rtl">
             <div class="max-w-7xl mx-auto px-4">
-                <div class="ts-title text-center">
-                    <h2>אמרו עלי</h2>
+                <div class="ts-title text-center mb-8 md:mb-10">
+                    <h2 class="mb-3">אמרו עליי</h2>
+                    <p class="reviews-section-v1-subtitle mx-auto mb-0">
+                        המלצות לקוחות בגירסה נקיה ומסודרת. את התוכן אפשר לעדכן בקלות דרך קובץ הנתונים.
+                    </p>
                 </div>
 
-                <div class="sk-ww-google-reviews" data-embed-id="25674545"></div>
-                <script src="https://widgets.sociablekit.com/google-reviews/widget.js" defer></script>
-            </div>
-            <div class="text-center mt-4">
-                <a href="https://search.google.com/local/reviews?placeid=ChIJy4Bmq2wLHksRpfYxOGcyTa0" target="_blank" class="inline-flex items-center text-sm rounded-full px-4 py-2" style="border: 1px solid #2a3b7c; color: #2a3b7c;">
-                    לקריאת כל ההמלצות בגוגל
-                </a>
+                <div id="successful-stories-list" class="reviews-grid-v1" aria-live="polite"></div>
+
+                <div class="text-center mt-8">
+                    <a id="successful-stories-google-link" href="#" target="_blank" rel="noopener noreferrer" class="reviews-google-link-v1 inline-flex items-center text-sm font-semibold rounded-full px-5 py-2.5">
+                        לקריאת כל ההמלצות בגוגל
+                    </a>
+                </div>
             </div>
         </section>
 
@@ -598,7 +645,7 @@
                             <h2 class="mb-0">הפודקאסט שלי</h2>
                         </div>
 
-                        <a href="https://www.youtube.com/playlist?list=PLBJ96J5tF_mmQO2ILWrnZ_kPhKP2bRfdH" target="_blank" class="inline-flex flex-row-reverse items-center gap-2 border-2 border-red-600 text-red-600 hover:bg-red-50 text-sm font-semibold px-5 py-2 rounded-full mb-5 whitespace-nowrap">
+                        <a href="https://www.youtube.com/playlist?list=PLBJ96J5tF_mmQO2ILWrnZ_kPhKP2bRfdH" target="_blank" class="inline-flex flex-row-reverse items-center gap-2 border-2 border-red-600 text-red-600 hover:bg-red-50 text-sm font-semibold px-5 py-2 rounded-full mb-7 whitespace-nowrap">
                             <i class="fab fa-youtube"></i>
                             לכל הפרקים ב-YouTube
                         </a>
@@ -614,7 +661,7 @@
                                     </a>
                                 </div>
                                 <div>
-                                    <h5 style="text-align:right; margin-top:-1.3rem">
+                                    <h5 style="text-align:right; margin-top:-2.5rem">
                                         פרק 25 – "לוחם של אמת" | איתן כהן אצל אורית גרושטיין
                                     </h5>
                                 </div>
@@ -630,7 +677,7 @@
                                     </a>
                                 </div>
                                 <div>
-                                    <h5 style="text-align:right; margin-top:-1.3rem">
+                                    <h5 style="text-align:right; margin-top:-2.5rem">
                                         פרק 9 – "רווח וציונות לפני הכל" עם אריאל אורבוך
                                     </h5>
                                 </div>
@@ -645,7 +692,7 @@
                                     </a>
                                 </div>
                                 <div>
-                                    <h5 style="text-align:right; margin-top:-1.3rem">
+                                    <h5 style="text-align:right; margin-top:-2.5rem">
                                         פרק 4 - "באנו לעולם כדי לשחק" עם שרית אונגר
                                     </h5>
                                 </div>

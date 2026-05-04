@@ -2649,6 +2649,218 @@ E. Template Specific Elements
     color: #475569;
 }
 
+/* Products section — warmer band + stronger card separation (less “all white”) */
+#my-products.products-v2.ts-block {
+    background-color: #d8cfc3;
+    background-image:
+        radial-gradient(ellipse 120% 80% at 50% 0%, rgba(119, 152, 253, 0.14) 0%, transparent 55%),
+        linear-gradient(175deg, #e5ddd2 0%, #d6cdc0 45%, #cbc0b2 100%);
+}
+
+#my-products.products-v2 .products-v2-subtitle {
+    max-width: 38rem;
+    font-size: 1.02rem;
+    line-height: 1.75;
+    color: #3f4a55;
+    font-weight: 400;
+}
+
+#my-products.products-v2 .products-v2-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: linear-gradient(180deg, #fffcf7 0%, #f5f0e8 100%);
+    border: 1px solid rgba(45, 42, 38, 0.14);
+    border-radius: 1.125rem;
+    overflow: hidden;
+    box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.65) inset,
+        0 12px 28px rgba(35, 28, 22, 0.12);
+    transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+}
+
+#my-products.products-v2 .products-v2-card:hover {
+    transform: translateY(-4px);
+    box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.55) inset,
+        0 20px 44px rgba(35, 28, 22, 0.16);
+    border-color: rgba(45, 42, 38, 0.22);
+}
+
+#my-products.products-v2 .products-v2-media {
+    background: linear-gradient(155deg, #b8c6d6 0%, #9eb0c4 55%, #8a9db2 100%);
+    padding: 1.5rem 1.25rem 1rem;
+    min-height: 280px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.12);
+}
+
+#my-products.products-v2 .products-v2-image {
+    width: 100%;
+    max-height: 360px;
+    height: auto;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+}
+
+#my-products.products-v2 .products-v2-body {
+    padding: 1.35rem 1.5rem 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(180deg, rgba(255, 252, 247, 0.97) 0%, #efe9e0 100%);
+    border-top: 1px solid rgba(45, 42, 38, 0.08);
+}
+
+#my-products.products-v2 .products-v2-kicker {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #5a6570;
+    margin: 0 0 0.4rem;
+}
+
+#my-products.products-v2 .products-v2-title {
+    font-size: 1.35rem !important;
+    font-weight: 700 !important;
+    color: #0f172a !important;
+    margin: 0 0 0.65rem !important;
+    line-height: 1.3 !important;
+}
+
+#my-products.products-v2 .products-v2-desc {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #3d4a55;
+    margin: 0;
+    flex: 1;
+}
+
+#my-products.products-v2 .products-v2-cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 1rem;
+    margin-top: auto;
+    padding-top: 0.25rem;
+}
+
+#my-products.products-v2 .products-v2-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #dc2626;
+    color: #fff !important;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0.55rem 1.35rem;
+    border-radius: 9999px;
+    text-decoration: none !important;
+    transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+#my-products.products-v2 .products-v2-btn-primary:hover {
+    background: #b91c1c;
+    box-shadow: 0 4px 14px rgba(220, 38, 38, 0.35);
+}
+
+/* אירועים קרובים — גובה אחיד, כפתורים בשורה תחתונה, פחות “לבן על לבן” */
+#latest-courses.events-grid-v1 {
+    background-color: #ece8e2;
+    background-image: linear-gradient(180deg, #f2eee8 0%, #e8e2da 100%);
+}
+
+#latest-courses.events-grid-v1 .events-grid-v1-subtitle {
+    max-width: 36rem;
+    font-size: 1.02rem;
+    line-height: 1.75;
+    color: #4a5568;
+    font-weight: 400;
+}
+
+#latest-courses.events-grid-v1 .events-v1-card {
+    border: 1px solid rgba(45, 42, 38, 0.12);
+    box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.6) inset,
+        0 14px 32px rgba(35, 28, 22, 0.1);
+    background: linear-gradient(180deg, #fefdfb 0%, #f5f1eb 100%);
+    transition: transform 0.26s ease, box-shadow 0.26s ease;
+}
+
+#latest-courses.events-grid-v1 .events-v1-card:hover {
+    transform: translateY(-3px);
+    box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.5) inset,
+        0 20px 40px rgba(35, 28, 22, 0.13);
+}
+
+#latest-courses.events-grid-v1 .card-img[data-bg-image] {
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+#latest-courses.events-grid-v1 .events-v1-date {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: #64748b !important;
+}
+
+#latest-courses.events-grid-v1 .events-v1-heading {
+    font-size: 1.12rem !important;
+    font-weight: 700 !important;
+    color: #0f172a !important;
+    line-height: 1.35 !important;
+    margin-bottom: 0.65rem !important;
+}
+
+#latest-courses.events-grid-v1 .events-v1-desc {
+    font-size: 0.92rem;
+    line-height: 1.65;
+    color: #475569;
+    margin: 0;
+}
+
+#latest-courses.events-grid-v1 .events-v1-cta:hover {
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.32);
+}
+
+/* קרוסלת Owl ארכיון — יישור קו עם ה-markup המועתק בהערת ה-HTML של #my-products */
+#my-products .product-card-clean {
+    border: 1px solid #e2e8f0;
+    border-radius: 1rem;
+    box-shadow: none;
+    background: #f8fafc;
+    overflow: hidden;
+}
+
+#my-products .product-card-image {
+    width: 100%;
+    height: 560px;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+    margin: 0 auto;
+    background: #f3f4f6;
+}
+
+#my-products .product-card-overlay {
+    background: transparent !important;
+}
+
+#my-products .product-card-caption {
+    background: rgba(15, 23, 42, 0.58);
+    padding: 16px;
+    border-radius: 14px;
+    max-width: 82%;
+    text-align: center;
+}
+
     .contenedor-scroll {
         /* Calculamos la altura: line-height * cantidad de líneas */
         line-height: 1.5em;
@@ -2824,4 +3036,192 @@ body h6, body .ts-h6 {
 .navbar .navbar-nav > a.ts-scroll:focus-visible::after {
     transform: scaleX(1);
     opacity: 1;
+}
+
+/* Customers opinions: softer rounded cards inside owl */
+#costumers-opinions .owl-carousel .card {
+    border-radius: 1.35rem;
+    overflow: hidden;
+}
+
+#costumers-opinions .owl-carousel .card .card-img,
+#costumers-opinions .owl-carousel .card .card-img-overlay {
+    border-radius: inherit;
+}
+
+#my-podcast .owl-carousel .card {
+    border-radius: 1.35rem;
+    overflow: hidden;
+}
+
+#my-podcast .owl-carousel .card .card-img,
+#my-podcast .owl-carousel .card .card-img-overlay {
+    border-radius: inherit;
+}
+
+/* Reviews section (custom replacement for third-party widget) */
+#successful-stories.reviews-section-v1 {
+    background-color: #e7ebf3;
+    background-image:
+        radial-gradient(ellipse 100% 75% at 50% 0%, rgba(119, 152, 253, 0.12) 0%, transparent 56%),
+        linear-gradient(180deg, #eff2f8 0%, #e1e5ee 100%);
+}
+
+#successful-stories.reviews-section-v1 .reviews-section-v1-subtitle {
+    max-width: 36rem;
+    font-size: 1.02rem;
+    line-height: 1.75;
+    color: #46566a;
+}
+
+#successful-stories .reviews-grid-v1 {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+#successful-stories .review-card-v1 {
+    background: linear-gradient(180deg, #fff 0%, #f6f7fb 100%);
+    border: 1px solid rgba(15, 23, 42, 0.1);
+    border-radius: 1rem;
+    padding: 1rem;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    height: 15.5rem;
+}
+
+#successful-stories .review-card-v1-head {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+}
+
+#successful-stories .review-card-v1-avatar {
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 9999px;
+    overflow: hidden;
+    background: linear-gradient(145deg, #dbe6fb 0%, #a8bde4 100%);
+    color: #22345b;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+#successful-stories .review-card-v1-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+#successful-stories .review-card-v1-meta {
+    min-width: 0;
+}
+
+#successful-stories .review-card-v1-name {
+    margin: 0;
+    font-size: 0.98rem;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.25;
+}
+
+#successful-stories .review-card-v1-sub {
+    margin: 0.1rem 0 0;
+    font-size: 0.8rem;
+    color: #64748b;
+    line-height: 1.35;
+}
+
+#successful-stories .review-card-v1-stars {
+    margin: 0.18rem 0 0;
+    color: #f59e0b;
+    letter-spacing: 0.06em;
+    font-size: 0.83rem;
+    line-height: 1;
+}
+
+#successful-stories .review-card-v1-text {
+    margin: 0;
+    font-size: 0.92rem;
+    line-height: 1.65;
+    color: #475569;
+    border: none;
+    padding: 0;
+    font-style: normal;
+    quotes: none;
+    white-space: pre-line;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+#successful-stories .review-card-v1-toggle {
+    align-self: flex-start;
+    border: 0;
+    background: transparent;
+    color: #1f3a70;
+    font-size: 0.82rem;
+    font-weight: 700;
+    padding: 0;
+    margin-top: auto;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#successful-stories .review-card-v1-toggle:hover {
+    color: #152d56;
+}
+
+#successful-stories .review-card-v1-date {
+    margin: 0.15rem 0 0;
+    font-size: 0.76rem;
+    color: #94a3b8;
+}
+
+#successful-stories .review-card-v1.is-expanded {
+    height: auto;
+    min-height: 15.5rem;
+}
+
+#successful-stories .review-card-v1.is-expanded .review-card-v1-text {
+    display: block;
+    -webkit-line-clamp: unset;
+    line-clamp: unset;
+    overflow: visible;
+}
+
+#successful-stories .reviews-google-link-v1 {
+    border: 1px solid rgba(42, 59, 124, 0.4);
+    color: #1f3465 !important;
+    background: rgba(255, 255, 255, 0.92);
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+#successful-stories .reviews-google-link-v1:hover {
+    background: #fff;
+    border-color: #2a3b7c;
+    color: #17294d !important;
+}
+
+@media (min-width: 640px) {
+    #successful-stories .reviews-grid-v1 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.1rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    #successful-stories .reviews-grid-v1 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.2rem;
+    }
 }
