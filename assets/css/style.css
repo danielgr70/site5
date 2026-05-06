@@ -2555,12 +2555,13 @@ E. Template Specific Elements
     }
 
     .about-me-v2 {
-        background: linear-gradient(160deg, #6f8ef5 0%, #7798fd 55%, #7f9dfd 100%);
+        background: #ffffff;
     }
 
     .about-me-v2-content {
-    max-width: 58ch;
+        max-width: 62ch;
         margin-inline-start: auto;
+        padding-inline: clamp(0.25rem, 1.2vw, 1.25rem);
     }
 
     .about-me-v2-kicker {
@@ -2572,19 +2573,19 @@ E. Template Specific Elements
     }
 
     .about-me-v2-title {
-        color: #fff;
+        color: #1e293b;
         letter-spacing: -0.02em;
         margin-bottom: 1rem !important;
     }
 
     .about-me-v2-text {
-        color: rgba(255, 255, 255, 0.94) !important;
-    font-size: .98rem;
-    line-height: 1.85;
+        color: #334155 !important;
+        font-size: .98rem;
+        line-height: 1.9;
     }
 
     .about-me-v2-note {
-        color: rgba(255, 255, 255, 0.82);
+        color: #64748b;
         font-size: .9rem;
         font-weight: 500;
     }
@@ -2601,7 +2602,7 @@ E. Template Specific Elements
     }
 
 .services-v1 {
-    background: #f8fafc;
+    background: #f8f9fa;
 }
 
 .services-v1-subtitle {
@@ -2616,14 +2617,14 @@ E. Template Specific Elements
     background: #ffffff;
     border: 1px solid #e2e8f0;
     border-radius: 1.25rem;
-    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
     padding: 1.4rem 1.2rem 1.25rem;
-    transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+    transition: all .3s ease;
 }
 
 #how-can-i-help-you .service-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 22px rgba(15, 23, 42, 0.10);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 14px 28px rgba(15, 23, 42, 0.14);
     border-color: #cbd5e1;
 }
 
@@ -2651,10 +2652,8 @@ E. Template Specific Elements
 
 /* Products section — warmer band + stronger card separation (less “all white”) */
 #my-products.products-v2.ts-block {
-    background-color: #d8cfc3;
-    background-image:
-        radial-gradient(ellipse 120% 80% at 50% 0%, rgba(119, 152, 253, 0.14) 0%, transparent 55%),
-        linear-gradient(175deg, #e5ddd2 0%, #d6cdc0 45%, #cbc0b2 100%);
+    background-color: #f8f9fa;
+    background-image: none;
 }
 
 #my-products.products-v2 .products-v2-subtitle {
@@ -2673,17 +2672,13 @@ E. Template Specific Elements
     border: 1px solid rgba(45, 42, 38, 0.14);
     border-radius: 1.125rem;
     overflow: hidden;
-    box-shadow:
-        0 1px 0 rgba(255, 255, 255, 0.65) inset,
-        0 12px 28px rgba(35, 28, 22, 0.12);
-    transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
+    transition: all .3s ease;
 }
 
 #my-products.products-v2 .products-v2-card:hover {
-    transform: translateY(-4px);
-    box-shadow:
-        0 1px 0 rgba(255, 255, 255, 0.55) inset,
-        0 20px 44px rgba(35, 28, 22, 0.16);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 16px 32px rgba(15, 23, 42, 0.14);
     border-color: rgba(45, 42, 38, 0.22);
 }
 
@@ -2711,8 +2706,8 @@ E. Template Specific Elements
     flex: 1;
     display: flex;
     flex-direction: column;
-    background: linear-gradient(180deg, rgba(255, 252, 247, 0.97) 0%, #efe9e0 100%);
-    border-top: 1px solid rgba(45, 42, 38, 0.08);
+    background: linear-gradient(180deg, #f8faff 0%, #f1f5fd 100%);
+    border-top: 1px solid #d9e2f2;
 }
 
 #my-products.products-v2 .products-v2-kicker {
@@ -2720,7 +2715,7 @@ E. Template Specific Elements
     font-weight: 700;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: #5a6570;
+    color: #4b6cb7;
     margin: 0 0 0.4rem;
 }
 
@@ -2735,7 +2730,7 @@ E. Template Specific Elements
 #my-products.products-v2 .products-v2-desc {
     font-size: 0.95rem;
     line-height: 1.7;
-    color: #3d4a55;
+    color: #475569;
     margin: 0;
     flex: 1;
 }
@@ -2765,13 +2760,13 @@ E. Template Specific Elements
 
 #my-products.products-v2 .products-v2-btn-primary:hover {
     background: #b91c1c;
-    box-shadow: 0 4px 14px rgba(220, 38, 38, 0.35);
+    box-shadow: 0 4px 10px rgba(220, 38, 38, 0.24);
 }
 
 /* אירועים קרובים — גובה אחיד, כפתורים בשורה תחתונה, פחות “לבן על לבן” */
 #latest-courses.events-grid-v1 {
-    background-color: #ece8e2;
-    background-image: linear-gradient(180deg, #f2eee8 0%, #e8e2da 100%);
+    background-color: #f8f9fa;
+    background-image: none;
 }
 
 #latest-courses.events-grid-v1 .events-grid-v1-subtitle {
@@ -2787,7 +2782,7 @@ E. Template Specific Elements
     box-shadow:
         0 1px 0 rgba(255, 255, 255, 0.6) inset,
         0 14px 32px rgba(35, 28, 22, 0.1);
-    background: linear-gradient(180deg, #fefdfb 0%, #f5f1eb 100%);
+    background: linear-gradient(180deg, #ffffff 0%, #f8faff 100%);
     transition: transform 0.26s ease, box-shadow 0.26s ease;
 }
 
@@ -2796,6 +2791,11 @@ E. Template Specific Elements
     box-shadow:
         0 1px 0 rgba(255, 255, 255, 0.5) inset,
         0 20px 40px rgba(35, 28, 22, 0.13);
+}
+
+#latest-courses.events-grid-v1 .events-v1-card-body {
+    background: linear-gradient(180deg, #f8faff 0%, #f1f5fd 100%);
+    border-top: 1px solid #d9e2f2;
 }
 
 #latest-courses.events-grid-v1 .card-img[data-bg-image] {
@@ -2808,7 +2808,7 @@ E. Template Specific Elements
     font-size: 0.8rem;
     font-weight: 600;
     letter-spacing: 0.02em;
-    color: #64748b !important;
+    color: #4b6cb7 !important;
 }
 
 #latest-courses.events-grid-v1 .events-v1-heading {
@@ -2826,8 +2826,13 @@ E. Template Specific Elements
     margin: 0;
 }
 
+#latest-courses.events-grid-v1 .events-v1-cta {
+    background: #dc2626;
+}
+
 #latest-courses.events-grid-v1 .events-v1-cta:hover {
-    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.32);
+    background: #b91c1c;
+    box-shadow: 0 4px 10px rgba(220, 38, 38, 0.24);
 }
 
 /* קרוסלת Owl ארכיון — יישור קו עם ה-markup המועתק בהערת ה-HTML של #my-products */
@@ -3038,6 +3043,16 @@ body h6, body .ts-h6 {
     opacity: 1;
 }
 
+.navbar .navbar-nav > a.ts-scroll.is-active {
+    color: #0f172a;
+    font-weight: 700;
+}
+
+.navbar .navbar-nav > a.ts-scroll.is-active::after {
+    transform: scaleX(1);
+    opacity: 1;
+}
+
 /* Customers opinions: softer rounded cards inside owl */
 #costumers-opinions .owl-carousel .card {
     border-radius: 1.35rem;
@@ -3061,17 +3076,15 @@ body h6, body .ts-h6 {
 
 /* Reviews section (custom replacement for third-party widget) */
 #successful-stories.reviews-section-v1 {
-    background-color: #e7ebf3;
-    background-image:
-        radial-gradient(ellipse 100% 75% at 50% 0%, rgba(119, 152, 253, 0.12) 0%, transparent 56%),
-        linear-gradient(180deg, #eff2f8 0%, #e1e5ee 100%);
+    background-color: #3b82f6;
+    background-image: linear-gradient(180deg, #4f8ff8 0%, #377ce8 100%);
 }
 
 #successful-stories.reviews-section-v1 .reviews-section-v1-subtitle {
     max-width: 36rem;
     font-size: 1.02rem;
     line-height: 1.75;
-    color: #46566a;
+    color: rgba(255, 255, 255, 0.92);
 }
 
 #successful-stories .reviews-grid-v1 {
@@ -3081,7 +3094,7 @@ body h6, body .ts-h6 {
 }
 
 #successful-stories .review-card-v1 {
-    background: linear-gradient(180deg, #fff 0%, #f6f7fb 100%);
+    background: #ffffff;
     border: 1px solid rgba(15, 23, 42, 0.1);
     border-radius: 1rem;
     padding: 1rem;
@@ -3201,15 +3214,15 @@ body h6, body .ts-h6 {
 
 #successful-stories .reviews-google-link-v1 {
     border: 1px solid rgba(42, 59, 124, 0.4);
-    color: #1f3465 !important;
-    background: rgba(255, 255, 255, 0.92);
+    color: #ffffff !important;
+    background: rgba(14, 39, 96, 0.18);
     transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
 #successful-stories .reviews-google-link-v1:hover {
-    background: #fff;
-    border-color: #2a3b7c;
-    color: #17294d !important;
+    background: rgba(14, 39, 96, 0.32);
+    border-color: rgba(255, 255, 255, 0.48);
+    color: #ffffff !important;
 }
 
 @media (min-width: 640px) {
@@ -3224,4 +3237,80 @@ body h6, body .ts-h6 {
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 1.2rem;
     }
+}
+
+/* Floating WhatsApp button */
+.floating-wa-btn {
+    position: fixed;
+    left: 1rem;
+    bottom: 1rem;
+    width: 3.35rem;
+    height: 3.35rem;
+    border-radius: 9999px;
+    background: #25d366;
+    color: #ffffff !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none !important;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.26);
+    z-index: 9998;
+    transition: transform .22s ease, box-shadow .22s ease, background-color .22s ease;
+}
+
+.floating-wa-btn i {
+    font-size: 1.55rem;
+    line-height: 1;
+}
+
+.floating-wa-btn:hover,
+.floating-wa-btn:focus-visible {
+    transform: translateY(-2px) scale(1.05);
+    background: #1fb85a;
+    box-shadow: 0 14px 28px rgba(15, 23, 42, 0.3);
+}
+
+/* Section titles: brush style based on provided reference */
+.ts-title h2,
+.about-me-v2-title {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 0.78rem;
+}
+
+/* Main thick stroke */
+.ts-title h2::after,
+.about-me-v2-title::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: -0.1rem;
+    height: 0.46rem;
+    background: #B4101C;
+    border-radius: 999px;
+    transform: rotate(-0.65deg) skewX(-10deg);
+    clip-path: polygon(
+        0% 68%, 5% 46%, 14% 33%, 30% 25%, 50% 22%, 68% 23%, 83% 26%, 93% 31%, 100% 40%,
+        99% 58%, 92% 69%, 79% 74%, 61% 76%, 40% 76%, 23% 74%, 10% 72%, 2% 70%
+    );
+    opacity: 0.98;
+    pointer-events: none;
+}
+
+/* Secondary thin inner stroke */
+.ts-title h2::before,
+.about-me-v2-title::before {
+    content: "";
+    position: absolute;
+    right: 21%;
+    left: 29%;
+    bottom: -0.03rem;
+    height: 0.14rem;
+    background: #B4101C;
+    border-radius: 999px;
+    transform: rotate(-1.6deg);
+    clip-path: polygon(0% 76%, 7% 40%, 26% 25%, 52% 20%, 77% 24%, 93% 35%, 100% 58%, 92% 70%, 74% 74%, 46% 76%, 19% 78%);
+    opacity: 0.9;
+    pointer-events: none;
 }

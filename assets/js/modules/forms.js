@@ -1,8 +1,54 @@
+function getHebrewValidationMessage(field) {
+    const validity = field.validity;
+    const label = field.getAttribute("data-he-label") || field.getAttribute("aria-label") || "שדה זה";
+
+    if (validity.valueMissing) {
+        return `נא למלא את ${label}.`;
+    }
+
+    if (validity.typeMismatch && field.type === "email") {
+        return "נא להזין כתובת דוא\"ל תקינה (לדוגמה: name@example.com).";
+    }
+
+    if (validity.patternMismatch) {
+        return `הערך שהוזן ב-${label} אינו בפורמט הנדרש.`;
+    }
+
+    if (validity.tooShort) {
+        return `נא להזין לפחות ${field.minLength} תווים.`;
+    }
+
+    if (validity.tooLong) {
+        return `נא להזין עד ${field.maxLength} תווים.`;
+    }
+
+    return "נא להזין ערך תקין.";
+}
+
+function setupHebrewValidation(form) {
+    const fields = form.querySelectorAll("input, textarea, select");
+    fields.forEach(function (field) {
+        field.addEventListener("invalid", function () {
+            field.setCustomValidity(getHebrewValidationMessage(field));
+        });
+
+        field.addEventListener("input", function () {
+            field.setCustomValidity("");
+        });
+
+        field.addEventListener("change", function () {
+            field.setCustomValidity("");
+        });
+    });
+}
+
 export function setupAjaxForms() {
     const forms = document.querySelectorAll(".contact-form-js");
     if (!forms.length) return;
 
     forms.forEach(function (form) {
+        setupHebrewValidation(form);
+
         form.addEventListener("submit", function (e) {
             e.preventDefault();
 

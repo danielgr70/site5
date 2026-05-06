@@ -17,6 +17,7 @@ import { setupOwlCarousel } from "./modules/owl.js";
 import { setupBackgroundLegacy } from "./modules/backgroundLegacy.js";
 import { setupStatsCounter } from "./modules/statsCounter.js";
 import { setupReviewsSection } from "./modules/reviewsSection.js";
+import { setupScrollSpy } from "./modules/scrollSpy.js";
 
 document.addEventListener("DOMContentLoaded", function () {
     setupSubscribeConsent();
@@ -37,4 +38,5 @@ document.addEventListener("DOMContentLoaded", function () {
     setupBackgroundLegacy();
     setupStatsCounter();
     setupReviewsSection();
+    setupScrollSpy();
 });
