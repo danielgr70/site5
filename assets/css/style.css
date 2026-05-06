@@ -2190,6 +2190,24 @@ E. Template Specific Elements
         margin-top: 0;
     }
 
+    /* Keep contact image anchored to white box bottom on all breakpoints */
+    .contact-photo-col {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center;
+        height: 100%;
+    }
+
+    .contact-photo-img {
+        display: block;
+        width: auto;
+        max-width: 100%;
+        max-height: 440px;
+        height: auto;
+        margin: 0;
+    }
+
     .ts-tabs-presentation .tab-pane img {
         opacity: 0;
         transition: .3s ease;
