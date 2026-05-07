@@ -6,27 +6,7 @@ export function setupBackgroundLegacy() {
 
         if ($this.hasClass("ts-separate-bg-element")) {
             $this.append('<div class="ts-background">');
-
-            if (window.$("[data-bg-color]")) {
-                $this.find(".ts-background").css("background-color", $this.attr("data-bg-color"));
-            }
-
-            if ($this.attr("data-bg-particles-line-color") || $this.attr("data-bg-particles-dot-color")) {
-                $this.find(".ts-background").append('<div class="ts-background-particles">');
-                window.$(".ts-background-particles").each(function () {
-                    const lineColor = $this.attr("data-bg-particles-line-color");
-                    const dotColor = $this.attr("data-bg-particles-dot-color");
-                    const parallax = $this.attr("data-bg-particles-parallax");
-                    window.$(this).particleground({
-                        density: 15000,
-                        lineWidth: 0.2,
-                        lineColor: lineColor,
-                        dotColor: dotColor,
-                        parallax: parallax,
-                        proximity: 200
-                    });
-                });
-            }
+            $this.find(".ts-background").css("background-color", $this.attr("data-bg-color"));
 
             if ($this.attr("data-bg-image") !== undefined) {
                 $this.find(".ts-background").append('<div class="ts-background-image">');

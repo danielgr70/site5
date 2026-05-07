@@ -1285,61 +1285,6 @@ img.card-img {
     width: 3rem;
 }
 
-.ts-circle__sm {
-    border-radius: 50%;
-    display: inline-block;
-    height: 4.375rem;
-    flex: 0 0 4.375rem;
-    overflow: hidden;
-    text-align: center;
-    line-height: 4.375rem;
-    width: 4.375rem;
-}
-
-.ts-circle__md {
-    border-radius: 50%;
-    display: inline-block;
-    height: 6.25rem;
-    flex: 0 0 6.25rem;
-    overflow: hidden;
-    text-align: center;
-    line-height: 6.25rem;
-    width: 6.25rem;
-}
-
-.ts-circle__lg {
-    border-radius: 50%;
-    display: inline-block;
-    height: 8.125rem;
-    flex: 0 0 8.125rem;
-    overflow: hidden;
-    text-align: center;
-    line-height: 8.125rem;
-    width: 8.125rem;
-}
-
-.ts-circle__xl {
-    border-radius: 50%;
-    display: inline-block;
-    height: 10rem;
-    flex: 0 0 10rem;
-    overflow: hidden;
-    text-align: center;
-    line-height: 10rem;
-    width: 10rem;
-}
-
-.ts-circle__xxl {
-    border-radius: 50%;
-    display: inline-block;
-    height: 15.625rem;
-    flex: 0 0 15.625rem;
-    overflow: hidden;
-    text-align: center;
-    line-height: 15.625rem;
-    width: 15.625rem;
-}
-
 /*-------------------------------------------
   -- Forms
 -------------------------------------------*/
@@ -1385,37 +1330,6 @@ form.ts-labels-inside-input .form-group,
 
     .form-group label {
         font-size: .8125rem;
-    }
-
-.ts-gallery {
-    position: relative;
-}
-
-    .ts-gallery .ts-gallery__image {
-        background-color: #191919;
-        color: #fff;
-        display: block;
-        height: 28rem;
-        overflow: hidden;
-    }
-
-        .ts-gallery .ts-gallery__image:hover .ts-img-into-bg {
-            opacity: .3;
-            transform: scale(1.1);
-        }
-
-    .ts-gallery .ts-gallery__caption {
-        padding: 3rem;
-        bottom: 0;
-        left: 0;
-        position: absolute;
-        z-index: 2;
-    }
-
-    .ts-gallery .ts-img-into-bg {
-        opacity: .6;
-        transition: 1s cubic-bezier(.23, .05, .17, 1.02);
-        transform: scale(1.03);
     }
 
 /*-------------------------------------------
@@ -1490,24 +1404,6 @@ ul {
     list-style: none;
     padding-left: 0;
 }
-
-    ul.ts-list-colored-bullets li:before {
-        content: "•";
-        color: #f4b200;
-        vertical-align: middle;
-        font-size: 1.75rem;
-        padding-right: .75rem;
-    }
-
-    ul.ts-list-divided li {
-        border-bottom: .0625rem solid rgba(0, 0, 0, .1);
-        padding-bottom: .3125rem;
-        padding-top: .3125rem;
-    }
-
-        ul.ts-list-divided li:last-child {
-            border-bottom: none;
-        }
 
 /*-------------------------------------------
   -- Loading Screen
@@ -1639,15 +1535,6 @@ body.has-loading-screen.loading-done:after {
 /* Bootstrap-like container width after Tailwind migration */
 .max-w-7xl {
     max-width: 1140px;
-}
-
-/*-------------------------------------------
-  -- Partners
--------------------------------------------*/
-
-.ts-partners a {
-    display: block;
-    padding: .625rem .3125rem;
 }
 
 /*-------------------------------------------
@@ -2002,132 +1889,6 @@ E. Template Specific Elements
             padding: 1.875rem 3.75rem;
         }
     /*-------------------------------------------
-  -- Price Box
--------------------------------------------*/
-
-    .ts-price-box__promoted {
-        box-shadow: .375rem .3125rem 1.5625rem rgba(0, 0, 0, .2);
-        margin-top: -1.25rem;
-        margin-bottom: .625rem;
-        z-index: 2;
-    }
-
-        .ts-price-box__promoted .ts-title {
-            transform: scale(1.2);
-        }
-    /*-------------------------------------------
-  -- Time Line
--------------------------------------------*/
-
-    .ts-time-line__horizontal {
-        padding-bottom: .625rem;
-        padding-top: .625rem;
-        position: relative;
-        /* timeline line */
-    }
-
-        .ts-time-line__horizontal ul {
-            padding-left: 1.875rem;
-            list-style: none;
-            position: relative;
-        }
-
-        .ts-time-line__horizontal:after {
-            background-color: #474747;
-            content: "";
-            bottom: 6.875rem;
-            height: .1875rem;
-            left: 0;
-            position: absolute;
-            width: 100%;
-        }
-
-        .ts-time-line__horizontal .ts-time-line__item {
-            flex: 0 0 auto;
-            margin-right: 1.875rem;
-            position: relative;
-            width: 18.75rem;
-        }
-
-            .ts-time-line__horizontal .ts-time-line__item .ts-box {
-                position: relative;
-                /* dot */
-            }
-
-                .ts-time-line__horizontal .ts-time-line__item .ts-box:before {
-                    background-color: #474747;
-                    bottom: -4.375rem;
-                    border-radius: 100%;
-                    content: "";
-                    left: 1.6875rem;
-                    height: .75rem;
-                    position: absolute;
-                    width: .75rem;
-                }
-
-            .ts-time-line__horizontal .ts-time-line__item .ts-box {
-                /*triangle*/
-            }
-
-                .ts-time-line__horizontal .ts-time-line__item .ts-box:after {
-                    border-color: #fff transparent transparent transparent;
-                    border-style: solid;
-                    border-width: .5rem .5rem 0 .5rem;
-                    bottom: -0.4375rem;
-                    content: "";
-                    left: 1.5625rem;
-                    height: 0;
-                    position: absolute;
-                    width: 0;
-                }
-
-            .ts-time-line__horizontal .ts-time-line__item.ts-time-line__milestone {
-                width: 4.375rem;
-            }
-
-                .ts-time-line__horizontal .ts-time-line__item.ts-time-line__milestone .ts-box {
-                    background-color: #f4b200;
-                    color: #fff;
-                }
-
-                    .ts-time-line__horizontal .ts-time-line__item.ts-time-line__milestone .ts-box:after {
-                        border-color: #f4b200 transparent transparent transparent;
-                    }
-
-                .ts-time-line__horizontal .ts-time-line__item.ts-time-line__milestone h5 {
-                    writing-mode: vertical-lr;
-                    margin: 0;
-                }
-
-            .ts-time-line__horizontal .ts-time-line__item figure {
-                margin-left: 1.875rem;
-                margin-top: 4.6875rem;
-            }
-
-                .ts-time-line__horizontal .ts-time-line__item figure small {
-                    text-transform: uppercase;
-                    opacity: .4;
-                }
-
-                .ts-time-line__horizontal .ts-time-line__item figure small,
-                .ts-time-line__horizontal .ts-time-line__item figure h6 {
-                    font-weight: 600;
-                }
-
-        .ts-time-line__horizontal .owl-stage-outer {
-            padding: 1rem 1rem 0 1rem;
-        }
-
-        .ts-time-line__horizontal .owl-stage {
-            align-items: flex-end;
-            display: flex;
-        }
-
-        .ts-time-line__horizontal .ts-sly-frame.ts-loaded > ul {
-            align-items: flex-end;
-            display: flex;
-        }
-    /*-------------------------------------------
   -- SVG Shapes
 -------------------------------------------*/
 
@@ -2144,43 +1905,6 @@ E. Template Specific Elements
         margin: auto;
     }
 
-    .ts-story:hover {
-        color: #fff;
-    }
-
-        .ts-story:hover p {
-            color: #fff;
-        }
-
-        .ts-story:hover .ts-background {
-            background-color: #000 !important;
-        }
-
-        .ts-story:hover .ts-background-image {
-            opacity: .4 !important;
-        }
-
-    .ts-story {
-        margin-bottom: 2rem;
-        padding: 14rem 2rem 2rem 2rem;
-        position: relative;
-    }
-
-        .ts-story .ts-background, .ts-story .ts-background-image {
-            transition: .3s ease;
-        }
-
-        .ts-story figure {
-            background-color: #fff;
-            color: rgba(25, 25, 25, .2);
-            font-weight: 500;
-            position: absolute;
-            top: -0.375rem;
-            left: 3rem;
-            padding: 1rem;
-            transform: rotate(-90deg);
-            transform-origin: bottom;
-        }
     /*-------------------------------------------
   -- Other
 -------------------------------------------*/
@@ -2208,16 +1932,6 @@ E. Template Specific Elements
         margin: 0;
     }
 
-    .ts-tabs-presentation .tab-pane img {
-        opacity: 0;
-        transition: .3s ease;
-        transform: translateY(1.25rem);
-    }
-
-    .ts-tabs-presentation .tab-pane.show.active img {
-        opacity: 1;
-        transform: translateY(0);
-    }
     /* Hero navigation arrows */
 
     #ts-hero .owl-prev, #ts-hero .owl-next {

@@ -6,7 +6,6 @@ import { setupCookieBanner } from "./modules/cookie.js";
 import { setupCountdown } from "./modules/countdown.js";
 import { setupSmoothScroll } from "./modules/smoothScroll.js";
 import { setupResizeBehavior } from "./modules/resize.js";
-import { setupUiEnhancements } from "./modules/uiEnhancements.js";
 import { setupBackgroundBasics } from "./modules/backgroundBasics.js";
 import { setupSeparateBackgroundSafe } from "./modules/backgroundSeparateSafe.js";
 import { getScrollBarWidth } from "./modules/scrollbar.js";
@@ -27,7 +26,6 @@ document.addEventListener("DOMContentLoaded", function () {
     setupCountdown();
     setupSmoothScroll();
     setupResizeBehavior();
-    setupUiEnhancements();
     setupBackgroundBasics();
     setupSeparateBackgroundSafe();
     setupEffectsInit();
