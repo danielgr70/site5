@@ -88,6 +88,14 @@ A. Basic Styling
     margin: 10px;
 }
 
+.icon-svg {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+    flex: 0 0 auto;
+}
+
 body {
     color: #191919;
     font-family: 'Poppins', sans-serif;
@@ -1052,11 +1060,11 @@ blockquote {
     outline: none !important;
 }
 
-    .btn:hover .fa-arrow-right {
+    .btn:hover .icon-arrow-right {
         transform: translateX(.5rem);
     }
 
-    .btn .fa-arrow-right {
+    .btn .icon-arrow-right {
         transition: .6s cubic-bezier(.85, -0.37, .17, 1.45);
         transform: translateX(0) rotate(.02deg);
     }
