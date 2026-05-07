@@ -5,7 +5,10 @@ export function setupResizeBehavior() {
         const fullScreenSections = document.querySelectorAll(".ts-full-screen");
         const viewportHeight = window.innerHeight;
         fullScreenSections.forEach(function (section) {
-            section.style.height = `${viewportHeight}px`;
+            // Keep "full screen" look, but allow section to grow with content
+            // on smaller viewports so CTAs don't overlap the next section.
+            section.style.minHeight = `${viewportHeight}px`;
+            section.style.height = "auto";
         });
     }
 
