@@ -9,7 +9,6 @@ import { setupResizeBehavior } from "./modules/resize.js";
 import { setupUiEnhancements } from "./modules/uiEnhancements.js";
 import { setupBackgroundBasics } from "./modules/backgroundBasics.js";
 import { setupSeparateBackgroundSafe } from "./modules/backgroundSeparateSafe.js";
-import { setupMap } from "./modules/map.js";
 import { getScrollBarWidth } from "./modules/scrollbar.js";
 import { setupEffectsInit } from "./modules/effectsInit.js";
 import { setupMagnificPopup } from "./modules/magnific.js";
@@ -31,7 +30,6 @@ document.addEventListener("DOMContentLoaded", function () {
     setupUiEnhancements();
     setupBackgroundBasics();
     setupSeparateBackgroundSafe();
-    setupMap();
     setupEffectsInit();
     setupMagnificPopup(getScrollBarWidth);
     setupOwlCarousel();

@@ -1,6 +1,1 @@
-{
-  "dependencies": {
-    "@imgly/background-removal-node": "^1.4.5",
-    "@napi-rs/canvas": "^0.1.100"
-  }
-}
+{}
