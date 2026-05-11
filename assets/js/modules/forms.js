@@ -1,3 +1,5 @@
+import { trackGtag } from "./analytics.js";
+
 function getHebrewValidationMessage(field) {
     const validity = field.validity;
     const label = field.getAttribute("data-he-label") || field.getAttribute("aria-label") || "שדה זה";
@@ -74,6 +76,17 @@ export function setupAjaxForms() {
                 .then(async function (response) {
                     await response.json();
                     if (response.status === 200) {
+                        if (form.id === "form-subscribe") {
+                            trackGtag("generate_lead", {
+                                method: "newsletter",
+                                form_id: "form-subscribe"
+                            });
+                        } else if (form.id === "form-contact") {
+                            trackGtag("generate_lead", {
+                                method: "contact_form",
+                                form_id: "form-contact"
+                            });
+                        }
                         Swal.fire({
                             title: "נשלח בהצלחה!",
                             text: form.id === "form-subscribe"

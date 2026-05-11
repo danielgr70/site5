@@ -1,3 +1,4 @@
+import { setupGtagClickTracking } from "./modules/analytics.js";
 import { setupSubscribeConsent } from "./modules/consent.js";
 import { setupMobileNav } from "./modules/nav.js";
 import { setupOfertaModal } from "./modules/modal.js";
@@ -18,9 +19,10 @@ import { setupReviewsSection } from "./modules/reviewsSection.js";
 import { setupScrollSpy } from "./modules/scrollSpy.js";
 
 document.addEventListener("DOMContentLoaded", function () {
+    setupGtagClickTracking();
     setupSubscribeConsent();
     setupMobileNav();
-    setupOfertaModal();
+    //setupOfertaModal();
     setupAjaxForms();
     setupCookieBanner();
     setupCountdown();
