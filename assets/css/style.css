@@ -1798,11 +1798,18 @@ D. Plugins Styles
     }
 
         .owl-carousel .owl-nav .owl-prev:after, .owl-carousel .owl-nav .owl-next:after {
-            font-family: "Font Awesome\ 5 Free";
-            font-weight: 900;
-            font-size: 1.375rem;
-            line-height: 2.5rem;
-            -webkit-font-smoothing: antialiased;
+            content: "";
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0.55rem;
+            height: 0.55rem;
+            margin: 0;
+            border: solid #fff;
+            border-width: 0 2px 2px 0;
+            font-size: 0;
+            line-height: 0;
         }
 
         .owl-carousel .owl-nav .owl-prev:hover, .owl-carousel .owl-nav .owl-next:hover {
@@ -1814,8 +1821,7 @@ D. Plugins Styles
     }
 
         .owl-carousel .owl-nav .owl-next:after {
-            content: "\f105";
-            margin-left: .1875rem;
+            transform: translate(-60%, -50%) rotate(-45deg);
         }
 
     .owl-carousel .owl-nav .owl-prev {
@@ -1823,8 +1829,7 @@ D. Plugins Styles
     }
 
         .owl-carousel .owl-nav .owl-prev:after {
-            content: "\f104";
-            margin-right: .0625rem;
+            transform: translate(-40%, -50%) rotate(135deg);
         }
 .owl-next, .owl-prev {
    margin-top:-35px
@@ -1865,8 +1870,8 @@ E. Template Specific Elements
 
         .ts-carousel-centered .owl-nav .owl-prev:after,
         .ts-carousel-centered .owl-nav .owl-next:after {
-            font-size: 1.375rem;
-            line-height: 3.75rem;
+            width: 0.65rem;
+            height: 0.65rem;
         }
 
         .ts-carousel-centered .owl-nav .owl-prev:hover,
@@ -1948,7 +1953,8 @@ E. Template Specific Elements
     }
 
         #ts-hero .owl-prev:after, #ts-hero .owl-next:after {
-            line-height: 2.25rem;
+            width: 0.5rem;
+            height: 0.5rem;
         }
     /* Hero slider height */
 
