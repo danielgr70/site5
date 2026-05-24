@@ -2517,7 +2517,24 @@ E. Template Specific Elements
     font-weight: 400;
 }
 
+#latest-courses.events-grid-v1 .events-v1-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 17.5rem), 22rem));
+    justify-content: center;
+    gap: 1.5rem;
+    align-items: stretch;
+}
+
+#latest-courses.events-grid-v1 .events-v1-grid-item {
+    display: contents;
+}
+
 #latest-courses.events-grid-v1 .events-v1-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100%;
+    margin-bottom: 0 !important;
     border: 1px solid rgba(45, 42, 38, 0.12);
     box-shadow:
         0 1px 0 rgba(255, 255, 255, 0.6) inset,
@@ -2534,6 +2551,10 @@ E. Template Specific Elements
 }
 
 #latest-courses.events-grid-v1 .events-v1-card-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    min-height: 0;
     background: linear-gradient(180deg, #f8faff 0%, #f1f5fd 100%);
     border-top: 1px solid #d9e2f2;
 }
@@ -2542,6 +2563,21 @@ E. Template Specific Elements
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
+}
+
+#latest-courses.events-grid-v1 .events-v1-card-image-wrap {
+    overflow: hidden;
+    position: relative;
+    flex-shrink: 0;
+}
+
+#latest-courses.events-grid-v1 .events-v1-card-image-wrap img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    object-position: top center;
 }
 
 #latest-courses.events-grid-v1 .events-v1-date {
@@ -2560,10 +2596,16 @@ E. Template Specific Elements
 }
 
 #latest-courses.events-grid-v1 .events-v1-desc {
+    flex: 1 1 auto;
     font-size: 0.92rem;
     line-height: 1.65;
     color: #475569;
     margin: 0;
+}
+
+#latest-courses.events-grid-v1 .events-v1-cta-wrap {
+    margin-top: auto;
+    flex-shrink: 0;
 }
 
 #latest-courses.events-grid-v1 .events-v1-cta {
@@ -2680,43 +2722,41 @@ body.modal-open {
     background-color: #ffffff;
 }
 
-.side-popup .modal-offer-title {
-    font-size: clamp(1.02rem, 1.12vw, 1.14rem) !important;
-    line-height: 1.3 !important;
-    color: #be123c;
-    font-weight: 700;
+.side-popup .modal-kenes-card {
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 1rem !important;
+    background-color: rgba(255, 255, 255, 0.97) !important;
 }
 
-.side-popup .modal-offer-badge {
+.side-popup .modal-kenes-badge {
     display: inline-flex;
     align-items: center;
     border-radius: 9999px;
     border: 1px solid rgba(190, 24, 93, 0.18);
     background: rgba(190, 24, 93, 0.08);
     color: #be123c;
-    font-size: .7rem;
+    font-size: 0.7rem;
     font-weight: 700;
-    letter-spacing: .02em;
-    padding: .2rem .55rem;
+    letter-spacing: 0.02em;
+    padding: 0.2rem 0.55rem;
 }
 
-.side-popup .modal-offer-subtitle {
-    color: #475569;
-    font-size: .9rem;
-    line-height: 1.45;
+.side-popup .modal-kenes-title {
+    font-size: clamp(1.05rem, 1.15vw, 1.2rem) !important;
 }
 
-.side-popup .modal-offer-note {
-    color: #64748b;
-    font-size: .75rem;
-    font-weight: 600;
+.side-popup .modal-kenes-desc {
+    font-size: 0.9rem;
+    line-height: 1.65;
 }
 
-.side-popup .modal-offer-image {
-    width: 100%;
-    max-width: 190px;
-    object-fit: cover;
-    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.12);
+.side-popup .modal-kenes-illustration {
+    margin-top: 0.15rem;
+}
+
+.side-popup .modal-kenes-illustration svg {
+    max-height: 72px;
+    width: auto;
 }
 
 /* Global heading normalization (post-migration) */

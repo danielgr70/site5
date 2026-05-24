@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
     setupGtagClickTracking();
     setupSubscribeConsent();
     setupMobileNav();
-    //setupOfertaModal();
+    setupOfertaModal();
     setupAjaxForms();
     setupCookieBanner();
     setupCountdown();

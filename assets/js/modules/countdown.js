@@ -6,7 +6,7 @@ export function setupCountdown() {
     const timerEl = document.getElementById("countdown-timer");
     if (!daysEl || !hoursEl || !minutesEl || !secondsEl || !timerEl) return;
 
-    const targetDate = new Date("2026-05-10T10:00:00").getTime();
+    const targetDate = new Date("2026-07-07T17:00:00").getTime();
 
     const countdown = setInterval(function () {
         const distance = targetDate - Date.now();
