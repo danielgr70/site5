@@ -2383,6 +2383,10 @@ E. Template Specific Elements
     width: auto;
 }
 
+#how-can-i-help-you .ts-item-header .icon img.service-icon-digital {
+    height: 70px;
+}
+
 #how-can-i-help-you .ts-item-body h4 {
     font-size: 1.08rem !important;
     font-weight: 700;
