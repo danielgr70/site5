@@ -1,122 +1,9 @@
-<!doctype html>
-<!-- Optional: data-site-url="https://your-domain.com" for correct canonical/social previews when not using default (current origin). -->
-<html lang="he" data-site-url="https://orit-grossztein.com/">
+---
+import Layout from '../layouts/Layout.astro';
+---
 
-<head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S78VYCH8KJ"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'G-S78VYCH8KJ');
-    </script>
-
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <title>אורית גרושטיין - מאמנת לשינוי, הגשמה וחיים עם משמעות</title>
-    <meta name="description"
-        content="אורית גרושטיין — מאמנת אישית ועסקית. ליווי לשינוי, צמיחה, תוכנית אינפיניטי לעסקים, קורסים והרצאות. תיאום שיחת היכרות ללא התחייבות.">
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-    <meta name="author" content="אורית גרושטיין">
-    <meta name="theme-color" content="#2869CB">
-
-    <meta property="og:type" content="website">
-    <meta property="og:locale" content="he_IL">
-    <meta property="og:title" content="אורית גרושטיין - מאמנת לשינוי, הגשמה וחיים עם משמעות">
-    <meta property="og:description"
-        content="אורית גרושטיין — מאמנת אישית ועסקית. ליווי לשינוי, צמיחה, תוכנית אינפיניטי לעסקים, קורסים והרצאות.">
-    <meta property="og:site_name" content="אורית גרושטיין">
-
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="אורית גרושטיין - מאמנת לשינוי, הגשמה וחיים עם משמעות">
-    <meta name="twitter:description"
-        content="אורית גרושטיין — מאמנת אישית ועסקית. ליווי לשינוי, צמיחה, תוכנית אינפיניטי לעסקים, קורסים והרצאות.">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@graph": [
-            {
-                "@type": "WebSite",
-                "name": "אורית גרושטיין",
-                "inLanguage": "he-IL",
-                "description": "מאמנת אישית ועסקית — שינוי, צמיחה והגשמה עם משמעות."
-            },
-            {
-                "@type": "Person",
-                "@id": "#orit-grossstein",
-                "name": "אורית גרושטיין",
-                "jobTitle": "מאמנת אישית ועסקית",
-                "telephone": "+972-52-3003410",
-                "sameAs": [
-                    "https://www.facebook.com/coach.orit",
-                    "https://www.instagram.com/orit.business.mental.coach/",
-                    "https://www.youtube.com/@OritGrossztein8"
-                ]
-            }
-        ]
-    }
-    </script>
-
-    <script>
-        (function () {
-            function absBase() {
-                var fromAttr = (document.documentElement.getAttribute('data-site-url') || '').trim().replace(/\/$/, '');
-                if (fromAttr) return fromAttr;
-                try {
-                    if (typeof location !== 'undefined' && /^https?:/i.test(location.protocol || '')) {
-                        return (location.origin + location.pathname.replace(/\/index\.html$/i, '/')).replace(/\/+$/, '');
-                    }
-                } catch (e) { }
-                return '';
-            }
-            var base = absBase();
-            if (!base) return;
-            var pageUrl = base + '/';
-            var link = document.createElement('link');
-            link.rel = 'canonical';
-            link.href = pageUrl;
-            document.head.appendChild(link);
-            function setMeta(sel, attr, key, val) {
-                var el = document.head.querySelector(sel);
-                if (!el) {
-                    el = document.createElement('meta');
-                    if (attr === 'property') el.setAttribute('property', key);
-                    else el.setAttribute('name', key);
-                    document.head.appendChild(el);
-                }
-                el.setAttribute('content', val);
-            }
-            setMeta('meta[property="og:url"]', 'property', 'og:url', pageUrl);
-            setMeta('meta[name="twitter:url"]', 'name', 'twitter:url', pageUrl);
-            var img = base + '/assets/img/orit-logo.webp';
-            setMeta('meta[property="og:image"]', 'property', 'og:image', img);
-            setMeta('meta[name="twitter:image"]', 'name', 'twitter:image', img);
-            var alt = document.createElement('link');
-            alt.rel = 'alternate';
-            alt.hreflang = 'he-IL';
-            alt.href = pageUrl;
-            document.head.appendChild(alt);
-        })();
-    </script>
-
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:400,600,700">
-    <link rel="stylesheet" href="assets/css/magnific-popup.css">
-    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="icon" type="image/webp" href="assets/img/favicon.webp">
-</head>
-
-
-<body class="has-loading-screen">
-    <div class="ts-page-wrapper" id="page-top">
+<Layout>
+<div class="ts-page-wrapper" id="page-top">
         <header id="ts-hero" class="ts-full-screen ts-separate-bg-element">
             <!--NAVIGATION ******************************************************************************************-->
             <nav
@@ -202,7 +89,7 @@
                     </div>
 
                     <a class="inline-flex items-center" href="#page-top" style="height: 40px;">
-                        <img src="assets/img/orit-logo.webp" alt="אורית גרושטיין - מאמנת אישית ועסקית" width="70"
+                        <img src="/assets/img/orit-logo.webp" alt="אורית גרושטיין - מאמנת אישית ועסקית" width="70"
                             height="70" style="height:60px;width:auto;">
                     </a>
                 </div>
@@ -216,7 +103,7 @@
                     <div class="col-span-12 md:col-span-6 flex flex-col items-center md:items-start text-center md:text-right"
                         dir="rtl">
                         <h1 class="sr-only">אורית גרושטיין — מאמנת לשינוי, הגשמה וחיים עם משמעות</h1>
-                        <img src="assets/img/orit-logo.webp" alt="לוגו — אורית גרושטיין, מאמנת אישית ועסקית"
+                        <img src="/assets/img/orit-logo.webp" alt="לוגו — אורית גרושטיין, מאמנת אישית ועסקית" width="1604" height="1163" loading="eager" fetchpriority="high" decoding="async"
                             style="max-width: 60%; max-height:60%; height:auto; width:auto">
 
                         <div
@@ -302,13 +189,13 @@
 
             <div class="ts-background" data-bg-color="#faf9f6" data-bg-parallax="scroll" data-bg-parallax-speed="3">
                 <div class="ts-background-image ts-parallax-element ts-z-index__1"
-                    data-bg-image="assets/img/bg-woman.webp" data-animate="ts-fadeInUp"
+                    data-bg-image="/assets/img/bg-woman.webp" data-animate="ts-fadeInUp"
                     style="margin-left:-200px;width:auto"></div>
                 <div class="ts-background-image ts-parallax-element absolute ts-top__0 ts-left__0 ts-z-index__0"
-                    data-bg-image="assets/img/bg-shape-top-left.webp" data-animate="ts-fadeInLeft" data-delay=".1s">
+                    data-bg-image="/assets/img/bg-shape-top-left.webp" data-animate="ts-fadeInLeft" data-delay=".1s">
                 </div>
                 <div class="ts-background-image ts-parallax-element absolute ts-top__0 ts-left__0 ts-z-index__-1"
-                    data-bg-image="assets/img/bg-shape-bottom-right.webp" data-animate="ts-fadeInRight" data-delay=".2s">
+                    data-bg-image="/assets/img/bg-shape-bottom-right.webp" data-animate="ts-fadeInRight" data-delay=".2s">
                 </div>
             </div>
         </header>
@@ -317,7 +204,7 @@
     <!--******************************** MAIN ****************************************-->
     <main id="ts-content">
         <section id="numbers" class="ts-block ts-separate-bg-element py-10 md:py-10 ts-xs-text-center"
-            data-bg-image="assets/img/bg-field.webp" data-bg-image-opacity=".1" data-bg-color="#2869CB"
+            data-bg-image="/assets/img/bg-field.webp" data-bg-image-opacity=".1" data-bg-color="#2869CB"
             data-bg-parallax="scroll" data-bg-parallax-speed="3">
             <div class="max-w-7xl mx-auto px-2">
                 <div class="rounded-3xl border border-white/25 bg-white/10 backdrop-blur-sm px-5 py-7 md:px-8 md:py-9">
@@ -383,7 +270,7 @@
                     </div>
                     <div class="col-span-12 lg:col-span-5">
                         <div class="about-me-v2-image-wrap flex justify-center lg:justify-start">
-                            <img src="assets/img/img-woman-pointing.webp" alt="אורית גרושטיין באזור נעים להכיר"
+                            <img src="/assets/img/img-woman-pointing.webp" alt="אורית גרושטיין באזור נעים להכיר"
                                 class="w-105 about-me-v2-image" loading="lazy" width="420" height="560">
                         </div>
                     </div>
@@ -409,7 +296,7 @@
                             <div class="ts-item-content service-card">
                                 <div class="ts-item-header">
                                     <figure class="icon">
-                                        <img src="assets/img/iconoCabeza.webp" height="72" width="72"
+                                        <img src="/assets/img/iconoCabeza.webp" height="72" width="72"
                                             alt="אייקון אימון אישי להגשמת מטרות" loading="lazy">
                                     </figure>
                                     <!--end icon-->
@@ -434,7 +321,7 @@
                             <div class="ts-item-content service-card">
                                 <div class="ts-item-header">
                                     <figure class="icon">
-                                        <img src="assets/img/iconoParlante.webp" height="72" width="72"
+                                        <img src="/assets/img/iconoParlante.webp" height="72" width="72"
                                             alt="אייקון ליווי עסקי ובניית נוכחות" loading="lazy">
                                     </figure>
                                     <!--end icon-->
@@ -459,7 +346,7 @@
                             <div class="ts-item-content service-card">
                                 <div class="ts-item-header">
                                     <figure class="icon">
-                                        <img src="assets/img/iconoMano.webp" height="72" width="72"
+                                        <img src="/assets/img/iconoMano.webp" height="72" width="72"
                                             alt="אייקון קורסים והדרכות דיגיטליות" loading="lazy">
                                     </figure>
                                     <!--end icon-->
@@ -482,7 +369,7 @@
                             <div class="ts-item-content service-card">
                                 <div class="ts-item-header">
                                     <figure class="icon">
-                                        <img src="assets/img/iconoBrujula.webp" height="72" width="72"
+                                        <img src="/assets/img/iconoBrujula.webp" height="72" width="72"
                                             alt="אייקון ליווי למאמנים" loading="lazy">
                                     </figure>
                                     <!--end icon-->
@@ -505,7 +392,7 @@
                             <div class="ts-item-content service-card">
                                 <div class="ts-item-header">
                                     <figure class="icon">
-                                        <img src="assets/img/iconoJaial.webp" height="54" width="54" class="mt-3"
+                                        <img src="/assets/img/iconoJaial.webp" height="54" width="54" class="mt-3"
                                             alt="אייקון ליווי לחיילים משוחררים" loading="lazy">
                                     </figure>
                                     <!--end icon-->
@@ -528,7 +415,7 @@
                             <div class="ts-item-content service-card">
                                 <div class="ts-item-header">
                                     <figure class="icon">
-                                        <img src="assets/img/iconoDigital.svg" class="service-icon-digital"
+                                        <img src="/assets/img/iconoDigital.svg" width="72" height="72" class="service-icon-digital"
                                             alt="אייקון שירותי דיגיטל לעסקים" loading="lazy">
                                     </figure>
                                     <!--end icon-->
@@ -571,7 +458,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 max-w-3xl mx-auto text-right" dir="rtl">
                     <article class="products-v2-card" data-animate="ts-fadeInUp">
                         <div class="card-img ts-height__350px shrink-0 bg-slate-200 bg-cover bg-center"
-                            data-bg-image="assets/img/mesarim.webp"></div>
+                            data-bg-image="/assets/img/mesarim.webp"></div>
                         <div class="products-v2-body">
                             <p class="products-v2-kicker">מארז פרימיום</p>
                             <h3 class="products-v2-title">מסרים של אור</h3>
@@ -587,7 +474,7 @@
 
                     <article class="products-v2-card" data-animate="ts-fadeInUp" data-delay="0.1s">
                         <div class="card-img ts-height__350px shrink0- bg-slate-200 bg-cover bg-center"
-                            data-bg-image="assets/img/setjalomi.webp"></div>
+                            data-bg-image="/assets/img/setjalomi.webp"></div>
                         <div class="products-v2-body">
                             <p class="products-v2-kicker">השלמה מושלמת לחוויה</p>
                             <h3 class="products-v2-title">הסט החלומי</h3>
@@ -618,7 +505,7 @@
 
                             <div class="owl-carousel" data-owl-dots="1" data-owl-nav="1" data-owl-items="2" data-owl-margin="20">
                                 <div class="card product-card-clean">
-                                    <img src="assets/img/mesarim-no-bg.webp" class="card-img product-card-image" alt="מארז קלפים מסרים של אור" loading="lazy">
+                                    <img src="/assets/img/mesarim-no-bg.webp" class="card-img product-card-image" alt="מארז קלפים מסרים של אור" loading="lazy" width="900" height="1004">
                                     <div class="card-img-overlay text-white product-card-overlay" data-bg-color="rgba(0,0,0,0)">
                                         <div class="card-img-overlay flex flex-col justify-end items-center" style="padding-bottom: 26px;">
                                             <div class="product-card-caption">
@@ -634,7 +521,7 @@
                                     </div>
                                 </div>
                                 <div class="card product-card-clean">
-                                    <img src="assets/img/setjalomi.webp" class="card-img product-card-image" alt="סט ז׳אלומי מסדרת מסרים של אור" loading="lazy">
+                                    <img src="/assets/img/setjalomi.webp" class="card-img product-card-image" alt="סט ז׳אלומי מסדרת מסרים של אור" loading="lazy" width="1157" height="912">
                                     <div class="card-img-overlay text-white product-card-overlay" data-bg-color="rgba(0,0,0,0)">
                                         <div class="card-img-overlay flex flex-col justify-end items-center" style="padding-bottom: 26px;">
                                             <div class="product-card-caption">
@@ -669,7 +556,7 @@
                         <div class="events-v1-card card ts-border-radius__lg w-full flex flex-col h-full mb-0"
                             data-animate="ts-fadeInUp">
                             <div class="card-img ts-height__300px shrink-0 bg-slate-200 bg-cover bg-center"
-                                data-bg-image="assets/img/event1.webp"></div>
+                                data-bg-image="/assets/img/event1.webp"></div>
                             <div class="events-v1-card-body card-body flex flex-col flex-grow min-h-0">
                                 <strong class="events-v1-date">בקרוב</strong>
                                 <h4 class="mt-3 events-v1-heading">שיווק סדנאות בקלות</h4>
@@ -689,7 +576,7 @@
                         <div class="events-v1-card card ts-border-radius__lg w-full flex flex-col h-full mb-0"
                             data-animate="ts-fadeInUp">
                             <div class="events-v1-card-image-wrap card-img shrink-0 bg-slate-200">
-                                <img src="assets/img/event4.webp" alt="שיווק סדנאות בקלות — מתחברים לאור" loading="lazy"
+                                <img src="/assets/img/event4.webp" alt="שיווק סדנאות בקלות — מתחברים לאור" loading="lazy" width="1080" height="1080"
                                     width="640" height="360">
                             </div>
                             <div class="events-v1-card-body card-body flex flex-col flex-grow min-h-0">
@@ -713,7 +600,7 @@
                         <div class="events-v1-card card ts-border-radius__lg w-full flex flex-col h-full mb-0"
                             data-animate="ts-fadeInUp">
                             <div class="events-v1-card-image-wrap card-img shrink-0 bg-slate-200">
-                                <img src="assets/img/event2.webp" alt="שיווק סדנאות בקלות — מתחברים לאור" loading="lazy"
+                                <img src="/assets/img/event2.webp" alt="שיווק סדנאות בקלות — מתחברים לאור" loading="lazy" width="1024" height="1024"
                                     width="640" height="360">
                             </div>
                             <div class="events-v1-card-body card-body flex flex-col flex-grow min-h-0">
@@ -739,7 +626,7 @@
                         <div class="events-v1-card card ts-border-radius__lg w-full flex flex-col h-full mb-0"
                             data-animate="ts-fadeInUp">
                             <div class="card-img ts-height__300px shrink-0 bg-slate-200 bg-cover bg-center"
-                                data-bg-image="assets/img/event3.webp"></div>
+                                data-bg-image="/assets/img/event3.webp"></div>
                             <div class="events-v1-card-body card-body flex flex-col flex-grow min-h-0">
                                 <strong class="events-v1-date">3.5.2026</strong>
                                 <h4 class="mt-3 events-v1-heading">עד מתי העסק שלך יישאר בהישרדות?</h4>
@@ -806,7 +693,7 @@
                 <!--end ts-title-->
                 <div class="owl-carousel" data-owl-dots="1" data-owl-nav="1" data-owl-items="3" data-owl-margin="20">
                     <div class="card">
-                        <img src="assets/img/opinion1.webp" class="card-img" alt="סרטון המלצה — משה חרלופסקי"
+                        <img src="/assets/img/opinion1.webp" class="card-img" alt="סרטון המלצה — משה חרלופסקי" width="1381" height="719"
                             loading="lazy">
                         <div class="card-img-overlay text-white" data-bg-color="rgba(0,0,0,.3)">
                             <div class="flex justify-center items-center h-full w-full">
@@ -824,7 +711,7 @@
                     </div>
                     <!--end card-->
                     <div class="card">
-                        <img src="assets/img/opinion2.webp" class="card-img" alt="סרטון המלצה — איתי דהן" loading="lazy">
+                        <img src="/assets/img/opinion2.webp" class="card-img" alt="סרטון המלצה — איתי דהן" loading="lazy" width="1381" height="719">
                         <div class="card-img-overlay text-white" data-bg-color="rgba(0,0,0,.3)">
                             <div class="flex justify-center items-center h-full w-full">
                                 <a href="https://www.youtube.com/watch?v=ZdL66u9Yuwo"
@@ -840,7 +727,7 @@
                         </div>
                     </div>
                     <div class="card">
-                        <img src="assets/img/opinion3.webp" class="card-img" alt="סרטון המלצה — ציפי פיינגולד"
+                        <img src="/assets/img/opinion3.webp" class="card-img" alt="סרטון המלצה — ציפי פיינגולד" width="1381" height="719"
                             loading="lazy">
                         <div class="card-img-overlay text-white" data-bg-color="rgba(0,0,0,.3)">
                             <div class="flex justify-center items-center h-full w-full">
@@ -859,7 +746,7 @@
                     <!--end card-->
 
                     <div class="card">
-                        <img src="assets/img/opinion4.webp" class="card-img" alt="סרטון המלצה — יעל וכמן "
+                        <img src="/assets/img/opinion4.webp" class="card-img" alt="סרטון המלצה — יעל וכמן " width="1381" height="719"
                             loading="lazy">
                         <div class="card-img-overlay text-white" data-bg-color="rgba(0,0,0,.3)">
                             <div class="flex justify-center items-center h-full w-full">
@@ -877,7 +764,7 @@
                     </div>
                     <!--end card-->
                     <div class="card">
-                        <img src="assets/img/opinion5.webp" class="card-img" alt="סרטון המלצה — ירון זיו" loading="lazy">
+                        <img src="/assets/img/opinion5.webp" class="card-img" alt="סרטון המלצה — ירון זיו" loading="lazy" width="1381" height="719">
                         <div class="card-img-overlay text-white" data-bg-color="rgba(0,0,0,.3)">
                             <div class="flex justify-center items-center h-full w-full">
                                 <a href="https://www.youtube.com/watch?v=WDXlvfbPD9Y"
@@ -893,11 +780,11 @@
                         </div>
                     </div>
                     <div class="card">
-                        <img src="assets/img/opinion6.webp" class="card-img" alt="סרטון המלצה — תמי ליבנה"
+                        <img src="/assets/img/opinion6.webp" class="card-img" alt="סרטון המלצה — תמי ליבנה" width="1381" height="719"
                             loading="lazy">
                         <div class="card-img-overlay text-white" data-bg-color="rgba(0,0,0,.3)">
                             <div class="flex justify-center items-center h-full w-full">
-                                <a href="https://www.youtube.com/watch?v=UST5OHgxh3w&t=42s"
+                                <a href="https://www.youtube.com/watch?v=UST5OHgxh3w"
                                     class="ts-circle__xs bg-white video-popup">
                                     <svg class="icon-svg text-gray-900" viewBox="0 0 24 24" aria-hidden="true">
                                         <polygon fill="currentColor" points="8,5 19,12 8,19" />
@@ -917,7 +804,7 @@
         <!--END FREE VIDEOS *************************************************************************************-->
         <!--SUBSCRIBE *******************************************************************************************-->
         <section id="subscribe" class="ts-block ts-separate-bg-element ts-background-repeat py-5"
-            data-bg-image="assets/img/pattern-topo.webp" data-bg-image-opacity=".05" data-bg-color="#7798FD">
+            data-bg-image="/assets/img/pattern-topo.webp" data-bg-image-opacity=".05" data-bg-color="#7798FD">
             <div class="max-w-7xl mx-auto px-4 py-2 text-right" dir="rtl">
                 <div class="lg:col-start-2 lg:col-span-10">
                     <h3 style="color:white">להצטרף לרשימת הדיוור</h3>
@@ -981,7 +868,7 @@
                     <div class="owl-carousel" data-owl-dots="1" data-owl-nav="1" data-owl-items="3"
                         data-owl-margin="20">
                         <div class="card">
-                            <img src="assets/img/podcast1.webp" class="card-img"
+                            <img src="/assets/img/podcast1.webp" class="card-img" width="1381" height="719"
                                 alt="פודקאסט — פרק 25, איתן כהן אצל אורית גרושטיין" loading="lazy">
                             <div class="card-img-overlay text-white" data-bg-color="rgba(0,0,0,.3)">
                                 <div class="flex justify-center items-center h-full w-full">
@@ -1001,7 +888,7 @@
                         </div>
                         <!--end card-->
                         <div class="card">
-                            <img src="assets/img/podcast2.webp" class="card-img" alt="פודקאסט — פרק 9 עם אריאל אורבוך"
+                            <img src="/assets/img/podcast2.webp" class="card-img" alt="פודקאסט — פרק 9 עם אריאל אורבוך" width="1381" height="719"
                                 loading="lazy">
                             <div class="card-img-overlay text-white" data-bg-color="rgba(0,0,0,.3)">
                                 <div class="flex justify-center items-center h-full w-full">
@@ -1020,7 +907,7 @@
                             </div>
                         </div>
                         <div class="card">
-                            <img src="assets/img/podcast3.webp" class="card-img" alt="פודקאסט — פרק 4 עם שרית אונגר"
+                            <img src="/assets/img/podcast3.webp" class="card-img" alt="פודקאסט — פרק 4 עם שרית אונגר" width="1381" height="719"
                                 loading="lazy">
                             <div class="card-img-overlay text-white" data-bg-color="rgba(0,0,0,.3)">
                                 <div class="flex justify-center items-center h-full w-full">
@@ -1054,7 +941,7 @@
 
 
     <footer id="ts-footer">
-        <section id="contact" class="ts-separate-bg-element pt-10 pb-5" data-bg-image="assets/img/bg-clouds-short.webp"
+        <section id="contact" class="ts-separate-bg-element pt-10 pb-5" data-bg-image="/assets/img/bg-clouds-short.webp"
             data-bg-image-opacity=".2" data-bg-color="#3B82F6">
             <div class="max-w-7xl mx-auto px-4">
 
@@ -1062,7 +949,7 @@
                     <div class="grid grid-cols-12 gap-6 items-end">
 
                         <div class="col-span-3 md:col-span-3 mt-0 contact-photo-col">
-                            <img src="assets/img/orit-phone.webp" class="contact-photo-img"
+                            <img src="/assets/img/orit-phone.webp" class="contact-photo-img"
                                 alt="אורית גרושטיין — יצירת קשר" width="380" height="440" loading="lazy">
                         </div>
 
@@ -1252,14 +1139,14 @@
         </svg>
     </a>
 
-    <script src="assets/js/jquery-3.3.1.min.js"></script>
-    <script src="assets/js/imagesloaded.pkgd.min.js"></script>
-    <script src="assets/js/isInViewport.jquery.js"></script>
-    <script src="assets/js/jquery.magnific-popup.min.js"></script>
-    <script src="assets/js/owl.carousel.min.js"></script>
-    <script src="assets/js/scrolla.jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script type="module" src="assets/js/app.js"></script>
+    <script is:inline src="/assets/js/jquery-3.3.1.min.js"></script>
+    <script is:inline src="/assets/js/imagesloaded.pkgd.min.js"></script>
+    <script is:inline src="/assets/js/isInViewport.jquery.js"></script>
+    <script is:inline src="/assets/js/jquery.magnific-popup.min.js"></script>
+    <script is:inline src="/assets/js/owl.carousel.min.js"></script>
+    <script is:inline src="/assets/js/scrolla.jquery.min.js"></script>
+    <script is:inline src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script is:inline type="module" src="/assets/js/app.js"></script>
     <div id="cookie-banner"
         style="position:fixed;bottom:0;left:0;width:100%;background:#333;color:#fff;padding:15px;text-align:center;z-index:10000;display:none;direction:rtl;font-family:sans-serif;">
         <span style="font-size:14px;margin-left:15px;">
@@ -1270,6 +1157,4 @@
             אני מסכים/ה
         </button>
     </div>
-</body>
-
-</html>
+</Layout>

@@ -1431,7 +1431,7 @@ body.has-loading-screen:before {
 }
 
 body.has-loading-screen:after {
-    content: url("../../assets/img/loading.svg");
+    content: url("/assets/img/loading.svg");
     height: 2.5rem;
     width: 2.5rem;
     position: fixed;

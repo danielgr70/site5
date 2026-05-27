@@ -19,6 +19,15 @@ import { setupReviewsSection } from "./modules/reviewsSection.js";
 import { setupScrollSpy } from "./modules/scrollSpy.js";
 
 document.addEventListener("DOMContentLoaded", function () {
+    const isMobile = window.matchMedia("(max-width: 767px)").matches;
+    const runWhenIdle = (callback) => {
+        if ("requestIdleCallback" in window) {
+            window.requestIdleCallback(callback, { timeout: 1200 });
+            return;
+        }
+        window.setTimeout(callback, 300);
+    };
+
     setupGtagClickTracking();
     setupSubscribeConsent();
     setupMobileNav();
@@ -30,10 +39,12 @@ document.addEventListener("DOMContentLoaded", function () {
     setupResizeBehavior();
     setupBackgroundBasics();
     setupSeparateBackgroundSafe();
-    setupEffectsInit();
-    setupMagnificPopup(getScrollBarWidth);
-    setupOwlCarousel();
-    setupBackgroundLegacy();
+    if (!isMobile) {
+        setupEffectsInit();
+        setupBackgroundLegacy();
+    }
+    runWhenIdle(() => setupMagnificPopup(getScrollBarWidth));
+    runWhenIdle(() => setupOwlCarousel());
     setupStatsCounter();
     setupReviewsSection();
     setupScrollSpy();

@@ -4,7 +4,8 @@
   },
   "editor.colorDecorators": true,
   "files.associations": {
-    "*.html": "html"
+    "*.html": "html",
+    "*.astro": "html"
   },
   "tailwindCSS.validate": true,
   "tailwindCSS.colorDecorators": true,
