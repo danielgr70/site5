@@ -1,0 +1,75 @@
+# Decap CMS — עריכת המלצות (Markdown ב-src/content/reviews)
+#
+# עריכה מקומית:
+#   Terminal 1: npm run dev
+#   Terminal 2: npm run cms
+#   Abrir: http://localhost:4321/admin/
+#
+# פרודקשן (GitHub): צריך OAuth App — https://decapcms.org/docs/github-backend/
+
+local_backend: true
+
+backend:
+  name: github
+  repo: danielgr70/site5
+  branch: main
+
+site_url: https://orit-grossztein.com
+display_url: https://orit-grossztein.com
+logo_url: /assets/img/orit-logo.webp
+locale: he
+
+media_folder: public/assets/img
+public_folder: /assets/img
+
+# Nombres de archivo seguros (a-z, 0-9, guiones) sin que Orit los vea ni los edite.
+slug:
+  encoding: ascii
+  clean_accents: true
+  sanitize_replacement: "-"
+
+collections:
+  - name: reviews
+    label: המלצות
+    label_singular: המלצה
+    folder: src/content/reviews
+    create: true
+    delete: true
+    # יצירה חדשה: שם קובץ אוטומטי (תאריך+שעה). עריכה: הקובץ הקיים נשאר ללא שינוי.
+    identifier_field: name
+    slug: "{{year}}-{{month}}-{{day}}-{{hour}}-{{minute}}-{{second}}"
+    extension: md
+    format: frontmatter
+    summary: "{{name}} — {{rating}} כוכבים"
+    sortable_fields: [order, name, rating]
+    fields:
+      - label: שם
+        name: name
+        widget: string
+      - label: תאריך (אופציונלי)
+        name: date
+        widget: string
+        required: false
+        hint: "השאר ריק אם אין תאריך"
+      - label: דירוג (1–5)
+        name: rating
+        widget: number
+        min: 1
+        max: 5
+        default: 5
+        value_type: int
+      - label: תמונת פרופיל
+        name: photoUrl
+        widget: image
+        required: false
+        choose_url: true
+        hint: "העלאה מהמחשב / בחירה מהספרייה, או «הוסף מקישור» (גוגל). ריק = ראשי תיבות"
+      - label: סדר תצוגה
+        name: order
+        widget: number
+        default: 0
+        value_type: int
+        hint: "מספר קטן יותר = מופיע קודם"
+      - label: טקסט ההמלצה
+        name: body
+        widget: markdown

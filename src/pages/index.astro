@@ -1,5 +1,37 @@
 ---
+import { getCollection } from "astro:content";
 import Layout from '../layouts/Layout.astro';
+
+const googleReviewsUrl =
+    "https://search.google.com/local/reviews?placeid=ChIJy4Bmq2wLHksRpfYxOGcyTa0";
+const READ_MORE_THRESHOLD = 220;
+/** Matches CSS `-webkit-line-clamp` on `.review-card-v1-text` */
+const READ_MORE_MAX_LINES = 4;
+
+function needsReadMore(text) {
+    const trimmed = text.trim();
+    if (!trimmed) return false;
+    if (trimmed.length > READ_MORE_THRESHOLD) return true;
+    return trimmed.split("\n").length > READ_MORE_MAX_LINES;
+}
+
+const reviewEntries = (await getCollection("reviews")).sort(
+    (a, b) => a.data.order - b.data.order
+);
+
+const reviews = reviewEntries.map((entry) => ({
+    ...entry.data,
+    id: entry.id,
+    text: entry.body.trim(),
+}));
+
+function getInitials(name) {
+    if (!name) return "א";
+    const parts = name.trim().split(/\s+/).filter(Boolean);
+    if (!parts.length) return "א";
+    if (parts.length === 1) return parts[0].charAt(0);
+    return `${parts[0].charAt(0)}${parts[1].charAt(0)}`;
+}
 ---
 
 <Layout>
@@ -660,10 +692,48 @@ import Layout from '../layouts/Layout.astro';
                     </p>
                 </div>
 
-                <div id="successful-stories-list" class="reviews-grid-v1" aria-live="polite"></div>
+                <div id="successful-stories-list" class="reviews-grid-v1" aria-live="polite">
+                    {reviews.map(({ id, photoUrl, name, rating, date, text }) => (
+                        <article class="review-card-v1" data-review-id={id}>
+                            <div class="review-card-v1-head">
+                                <div class="review-card-v1-avatar">
+                                    {photoUrl ? (
+                                        <img
+                                            src={photoUrl}
+                                            alt={`תמונה של ${name}`}
+                                            loading="lazy"
+                                            width="90"
+                                            height="90"
+                                        />
+                                    ) : (
+                                        <span>{getInitials(name)}</span>
+                                    )}
+                                </div>
+                                <div class="review-card-v1-meta">
+                                    <p class="review-card-v1-name">{name || "לקוח/ה"}</p>
+                                    <p class="review-card-v1-stars" aria-label={`${rating || 5} out of 5`}>
+                                        {"★".repeat(Math.max(1, Math.min(5, Number(rating) || 5)))}
+                                    </p>
+                                </div>
+                            </div>
+                            <blockquote class="review-card-v1-text">{text}</blockquote>
+                            {needsReadMore(text) && (
+                                <button
+                                    type="button"
+                                    class="review-card-v1-toggle"
+                                    aria-expanded="false"
+                                    data-review-toggle
+                                >
+                                    קרא עוד
+                                </button>
+                            )}
+                            {date && <p class="review-card-v1-date">{date}</p>}
+                        </article>
+                    ))}
+                </div>
 
                 <div class="text-center mt-8">
-                    <a id="successful-stories-google-link" href="#" target="_blank" rel="noopener noreferrer"
+                    <a id="successful-stories-google-link" href={googleReviewsUrl} target="_blank" rel="noopener noreferrer"
                         class="reviews-google-link-v1 inline-flex items-center text-sm font-semibold rounded-full px-5 py-2.5"
                         data-ga-event="google_reviews_open" data-ga-params='{"placement":"reviews_section"}'>
                         לקריאת כל ההמלצות בגוגל
@@ -671,6 +741,18 @@ import Layout from '../layouts/Layout.astro';
                 </div>
             </div>
         </section>
+        <script is:inline>
+            document.querySelectorAll("[data-review-toggle]").forEach((button) => {
+                button.addEventListener("click", () => {
+                    const card = button.closest(".review-card-v1");
+                    if (!card) return;
+                    const expanded = button.getAttribute("aria-expanded") === "true";
+                    button.setAttribute("aria-expanded", expanded ? "false" : "true");
+                    button.textContent = expanded ? "קרא עוד" : "קרא פחות";
+                    card.classList.toggle("is-expanded", !expanded);
+                });
+            });
+        </script>
 
 
         <!--END SUCCESSFUL STORIES ******************************************************************************-->

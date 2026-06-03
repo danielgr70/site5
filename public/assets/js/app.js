@@ -15,7 +15,6 @@ import { setupMagnificPopup } from "./modules/magnific.js";
 import { setupOwlCarousel } from "./modules/owl.js";
 import { setupBackgroundLegacy } from "./modules/backgroundLegacy.js";
 import { setupStatsCounter } from "./modules/statsCounter.js";
-import { setupReviewsSection } from "./modules/reviewsSection.js";
 import { setupScrollSpy } from "./modules/scrollSpy.js";
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -46,6 +45,5 @@ document.addEventListener("DOMContentLoaded", function () {
     runWhenIdle(() => setupMagnificPopup(getScrollBarWidth));
     runWhenIdle(() => setupOwlCarousel());
     setupStatsCounter();
-    setupReviewsSection();
     setupScrollSpy();
 });

@@ -1,0 +1,26 @@
+---
+// Panel Decap CMS — /admin (config en public/admin/config.yml)
+---
+<!doctype html>
+<html lang="he" dir="ltr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>ניהול תוכן — אורית גרושטיין</title>
+    <link href="/admin/config.yml" type="text/yaml" rel="cms-config-url" />
+    <style>
+        /* Decap no soporta RTL en el panel; el shell queda LTR para evitar solapamientos */
+        html, body, #nc-root, [class*="AppHeader"], [class*="Sidebar"] {
+            direction: ltr;
+        }
+        [class*="SearchInput"] {
+            width: 100%;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <script src="https://unpkg.com/decap-cms@^3.8.3/dist/decap-cms.js"></script>
+</body>
+</html>
