@@ -38,11 +38,14 @@ document.addEventListener("DOMContentLoaded", function () {
     setupResizeBehavior();
     setupBackgroundBasics();
     setupSeparateBackgroundSafe();
+    setupBackgroundLegacy();
     if (isMobile) {
         dismissLoadingScreen();
+        document.querySelectorAll("[data-animate]").forEach((el) => {
+            el.style.opacity = "1";
+        });
     } else {
         setupEffectsInit();
-        setupBackgroundLegacy();
     }
     runWhenIdle(() => setupMagnificPopup(getScrollBarWidth));
     runWhenIdle(() => setupOwlCarousel());
