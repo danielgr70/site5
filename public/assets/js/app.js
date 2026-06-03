@@ -10,7 +10,7 @@ import { setupResizeBehavior } from "./modules/resize.js";
 import { setupBackgroundBasics } from "./modules/backgroundBasics.js";
 import { setupSeparateBackgroundSafe } from "./modules/backgroundSeparateSafe.js";
 import { getScrollBarWidth } from "./modules/scrollbar.js";
-import { setupEffectsInit } from "./modules/effectsInit.js";
+import { dismissLoadingScreen, setupEffectsInit } from "./modules/effectsInit.js";
 import { setupMagnificPopup } from "./modules/magnific.js";
 import { setupOwlCarousel } from "./modules/owl.js";
 import { setupBackgroundLegacy } from "./modules/backgroundLegacy.js";
@@ -38,7 +38,9 @@ document.addEventListener("DOMContentLoaded", function () {
     setupResizeBehavior();
     setupBackgroundBasics();
     setupSeparateBackgroundSafe();
-    if (!isMobile) {
+    if (isMobile) {
+        dismissLoadingScreen();
+    } else {
         setupEffectsInit();
         setupBackgroundLegacy();
     }
