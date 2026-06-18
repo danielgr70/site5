@@ -1,5 +1,5 @@
 ---
-showEvent: true
+showEvent: false
 kicker: ההרשמה בעיצומה
 title: כנס "מתחברים לאור"
 location: ירושלים
