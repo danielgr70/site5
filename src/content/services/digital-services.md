@@ -1,0 +1,11 @@
+---
+title: "שירותי דיגיטל לעסקים"
+iconUrl: "/assets/img/iconoDigital.svg"
+iconAlt: "אייקון שירותי דיגיטל לעסקים"
+iconClass: "service-icon-digital"
+iconWidth: 72
+iconHeight: 72
+order: 6
+animateDelay: "0.3s"
+---
+בניית אתרי תדמית, דפי נחיתה יעודיים וכלים דיגיטליים שמקדמים צמיחה וחשיפה לעסק

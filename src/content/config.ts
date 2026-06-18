@@ -11,6 +11,21 @@ const reviews = defineCollection({
   }),
 });
 
+const services = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    iconUrl: z.string(),
+    iconAlt: z.string(),
+    iconClass: z.string().optional().default(""),
+    iconWidth: z.number().int().positive().default(72),
+    iconHeight: z.number().int().positive().default(72),
+    order: z.number().int().default(0),
+    animateDelay: z.string().optional().default(""),
+  }),
+});
+
 export const collections = {
   reviews,
+  services,
 };

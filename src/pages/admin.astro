@@ -2,18 +2,32 @@
 // Panel Decap CMS — /admin (config en public/admin/config.yml)
 ---
 <!doctype html>
-<html lang="he" dir="ltr">
+<html lang="he" dir="rtl">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex" />
     <title>ניהול תוכן — אורית גרושטיין</title>
     <link href="/admin/config.yml" type="text/yaml" rel="cms-config-url" />
-    <style>
-        /* Decap no soporta RTL en el panel; el shell queda LTR para evitar solapamientos */
-        html, body, #nc-root, [class*="AppHeader"], [class*="Sidebar"] {
-            direction: ltr;
+    <style is:global>
+        html, body, #nc-root {
+            direction: rtl;
+            text-align: right;
         }
+
+        /* Decap reserva 280px a la izquierda; en RTL el menú está a la derecha */
+        @media (min-width: 800px) {
+            #nc-root main {
+                padding-left: 0 !important;
+                padding-right: 280px !important;
+            }
+
+            #nc-root aside {
+                left: auto !important;
+                right: 0 !important;
+            }
+        }
+
         [class*="SearchInput"] {
             width: 100%;
             box-sizing: border-box;
@@ -21,6 +35,12 @@
     </style>
 </head>
 <body>
-    <script src="https://unpkg.com/decap-cms@^3.8.3/dist/decap-cms.js"></script>
+    <script is:inline src="https://unpkg.com/decap-cms@^3.8.3/dist/decap-cms.js"></script>
+    <script is:inline>
+        CMS.registerPreviewStyle(
+            "body { direction: rtl; text-align: right; } p, h1, h2, h3, li { text-align: right; }",
+            { raw: true }
+        );
+    </script>
 </body>
 </html>

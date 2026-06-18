@@ -1,4 +1,4 @@
-# Decap CMS — עריכת המלצות (Markdown ב-src/content/reviews)
+# Decap CMS — עריכת תוכן (Markdown ב-src/content/)
 #
 # עריכה מקומית:
 #   Terminal 1: npm run dev
@@ -29,6 +29,59 @@ slug:
   sanitize_replacement: "-"
 
 collections:
+  - name: services
+    label: שירותים
+    label_singular: שירות
+    folder: src/content/services
+    create: true
+    delete: true
+    identifier_field: title
+    slug: "{{year}}-{{month}}-{{day}}-{{hour}}-{{minute}}-{{second}}"
+    extension: md
+    format: frontmatter
+    summary: "{{title}}"
+    sortable_fields: [order, title]
+    fields:
+      - label: כותרת
+        name: title
+        widget: string
+      - label: אייקון
+        name: iconUrl
+        widget: image
+        choose_url: true
+      - label: טקסט חלופי לאייקון
+        name: iconAlt
+        widget: string
+      - label: מחלקת CSS לאייקון (אופציונלי)
+        name: iconClass
+        widget: string
+        required: false
+        hint: "לדוגמה: service-icon-digital או mt-3"
+      - label: רוחב אייקון (px)
+        name: iconWidth
+        widget: number
+        value_type: int
+        default: 72
+      - label: גובה אייקון (px)
+        name: iconHeight
+        widget: number
+        value_type: int
+        default: 72
+      - label: סדר תצוגה
+        name: order
+        widget: number
+        default: 0
+        value_type: int
+        hint: "מספר קטן יותר = מופיע קודם"
+      - label: עיכוב אנימציה (אופציונלי)
+        name: animateDelay
+        widget: string
+        required: false
+        hint: "לדוגמה: 0.1s — השאר ריק לכרטיס הראשון"
+      - label: תיאור
+        name: body
+        widget: markdown
+
   - name: reviews
     label: המלצות
     label_singular: המלצה
