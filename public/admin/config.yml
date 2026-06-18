@@ -9,10 +9,15 @@
 
 local_backend: true
 
-backend:
+backend:  
   name: github
   repo: danielgr70/site5
   branch: main
+
+publish_mode: editorial_workflow
+# Workflow: כל שמירה = draft (ענף + PR). "פרסם" בפריט = מיזוג ל-main.
+# בניית האתר ב-Netlify: Build Hook — כפתור "פרסום לאתר" ב-/admin (רק בפרודקשן, לא ב-localhost)
+# הגדירי את ה-URL ב-public/admin/deploy.json (שדה buildHookUrl)
 
 site_url: https://orit-grossztein.com
 display_url: https://orit-grossztein.com

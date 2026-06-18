@@ -1,5 +1,29 @@
 ---
 // Panel Decap CMS — /admin (config en public/admin/config.yml)
+import deployFile from "../../public/admin/deploy.json";
+
+const isDevMode = import.meta.env.DEV;
+const buildHookUrl = (
+    import.meta.env.NETLIFY_BUILD_HOOK_URL ||
+    deployFile.buildHookUrl ||
+    ""
+).trim();
+
+const deployBtnDisabled = isDevMode || !buildHookUrl;
+
+let deployStatusText = "";
+let deployStatusError = false;
+if (isDevMode) {
+    deployStatusText = "זמין רק בפרודקשן";
+    deployStatusError = true;
+} else if (!buildHookUrl) {
+    deployStatusText = "חסר Build Hook — ערכי /admin/deploy.json";
+    deployStatusError = true;
+}
+
+const deployHint = isDevMode
+    ? "מצב פיתוח — הכפתור מושבת כדי לא להפעיל בנייה ב-Netlify"
+    : "לאחר שסיימת לפרסם את כל השינויים — לחצי כאן כדי לבנות ולהעלות את האתר";
 ---
 <!doctype html>
 <html lang="he" dir="rtl">
@@ -9,56 +33,28 @@
     <meta name="robots" content="noindex" />
     <title>ניהול תוכן — אורית גרושטיין</title>
     <link href="/admin/config.yml" type="text/yaml" rel="cms-config-url" />
-    <style is:global>
-        html, body, #nc-root {
-            direction: rtl;
-            text-align: right;
-        }
-
-        /* Decap reserva 280px a la izquierda; en RTL el menú está a la derecha */
-        @media (min-width: 800px) {
-            #nc-root main {
-                padding-left: 0 !important;
-                padding-right: 280px !important;
-            }
-
-            #nc-root aside {
-                left: auto !important;
-                right: 0 !important;
-            }
-        }
-
-        [class*="SearchInput"] {
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        /*
-         * Split pane RTL: layout nativo hebreo (campos derecha, preview izquierda)
-         * y drag correcto. react-split-pane calcula en LTR; invierte el delta
-         * solo cuando los panes tienen flex order distinto (no con row-reverse).
-         */
-        #nc-root .SplitPane {
-            direction: ltr !important;
-        }
-
-        #nc-root .SplitPane .Pane2 {
-            order: 1;
-            direction: rtl !important;
-        }
-
-        #nc-root .SplitPane .Resizer {
-            order: 2;
-        }
-
-        #nc-root .SplitPane .Pane1 {
-            order: 3;
-            direction: rtl !important;
-            text-align: right;
-        }
-    </style>
+    <link rel="stylesheet" href="/admin/admin.css" />
 </head>
-<body>
+<body class="orit-deploy-bar-visible">
+    <div
+        id="orit-deploy-bar"
+        role="region"
+        aria-label="פרסום האתר"
+        data-build-hook-url={buildHookUrl}
+    >
+        <p>{deployHint}</p>
+        <button type="button" id="orit-deploy-btn" disabled={deployBtnDisabled}>
+            פרסום לאתר
+        </button>
+        <span
+            id="orit-deploy-status"
+            class:list={["deploy-status", deployStatusError && "is-error"]}
+            aria-live="polite"
+        >
+            {deployStatusText}
+        </span>
+    </div>
+
     <script is:inline src="https://unpkg.com/decap-cms@^3.8.3/dist/decap-cms.js"></script>
     <script is:inline>
         CMS.registerPreviewStyle(
@@ -66,5 +62,6 @@
             { raw: true }
         );
     </script>
+    <script is:inline src="/admin/admin-deploy.js"></script>
 </body>
 </html>
