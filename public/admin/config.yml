@@ -82,6 +82,140 @@ collections:
         name: body
         widget: markdown
 
+  - name: products
+    label: מוצרים
+    label_singular: מוצר
+    folder: src/content/products
+    create: true
+    delete: true
+    identifier_field: title
+    slug: "{{year}}-{{month}}-{{day}}-{{hour}}-{{minute}}-{{second}}"
+    extension: md
+    format: frontmatter
+    summary: "{{title}}"
+    sortable_fields: [order, title]
+    fields:
+      - label: תווית עליונה
+        name: kicker
+        widget: string
+        hint: "לדוגמה: מארז פרימיום"
+      - label: כותרת
+        name: title
+        widget: string
+      - label: תמונה
+        name: imageUrl
+        widget: image
+        choose_url: true
+      - label: סדר תצוגה
+        name: order
+        widget: number
+        default: 0
+        value_type: int
+        hint: "מספר קטן יותר = מופיע קודם"
+      - label: עיכוב אנימציה (אופציונלי)
+        name: animateDelay
+        widget: string
+        required: false
+        hint: "לדוגמה: 0.1s"
+      - label: טקסט כפתור
+        name: ctaText
+        widget: string
+      - label: קישור כפתור
+        name: ctaHref
+        widget: string
+        hint: "לדוגמה: https://... או #form-contact"
+      - label: פתיחה בטאב חדש
+        name: ctaNewTab
+        widget: boolean
+        default: false
+      - label: אירוע Analytics (אופציונלי)
+        name: ctaGaEvent
+        widget: string
+        required: false
+      - label: מיקום Analytics (אופציונלי)
+        name: ctaGaPlacement
+        widget: string
+        required: false
+        hint: "לדוגמה: products_grid"
+      - label: תיאור
+        name: body
+        widget: markdown
+
+  - name: events
+    label: אירועים
+    label_singular: אירוע
+    folder: src/content/events
+    create: true
+    delete: true
+    identifier_field: title
+    slug: "{{year}}-{{month}}-{{day}}-{{hour}}-{{minute}}-{{second}}"
+    extension: md
+    format: frontmatter
+    summary: "{{title}}"
+    sortable_fields: [order, title, dateLabel]
+    fields:
+      - label: כותרת
+        name: title
+        widget: string
+      - label: תאריך / מיקום (שורה עליונה)
+        name: dateLabel
+        widget: string
+        hint: "לדוגמה: ירושלים | יום שלישי בערב | 7.7.26"
+      - label: תמונה
+        name: imageUrl
+        widget: image
+        choose_url: true
+      - label: טקסט חלופי לתמונה
+        name: imageAlt
+        widget: string
+      - label: רוחב תמונה (px)
+        name: imageWidth
+        widget: number
+        value_type: int
+        default: 640
+      - label: גובה תמונה (px)
+        name: imageHeight
+        widget: number
+        value_type: int
+        default: 360
+      - label: סדר תצוגה
+        name: order
+        widget: number
+        default: 0
+        value_type: int
+        hint: "מספר קטן יותר = מופיע קודם"
+      - label: עיכוב אנימציה (אופציונלי)
+        name: animateDelay
+        widget: string
+        required: false
+      - label: טקסט כפתור
+        name: ctaText
+        widget: string
+      - label: קישור כפתור
+        name: ctaHref
+        widget: string
+      - label: פתיחה בטאב חדש
+        name: ctaNewTab
+        widget: boolean
+        default: true
+      - label: אירוע Analytics (אופציונלי)
+        name: ctaGaEvent
+        widget: string
+        required: false
+      - label: מיקום Analytics (אופציונלי)
+        name: ctaGaPlacement
+        widget: string
+        required: false
+        default: events_grid
+      - label: מזהה אירוע Analytics (אופציונלי)
+        name: ctaGaEventId
+        widget: string
+        required: false
+        hint: "לדוגמה: 86594 — רק אם נדרש ב-event_registration_click"
+      - label: תיאור
+        name: body
+        widget: markdown
+
   - name: reviews
     label: המלצות
     label_singular: המלצה
@@ -126,3 +260,71 @@ collections:
       - label: טקסט ההמלצה
         name: body
         widget: markdown
+
+  - name: customer_videos
+    label: לקוחות מספרים
+    label_singular: סרטון לקוח
+    folder: src/content/customer-videos
+    create: true
+    delete: true
+    identifier_field: name
+    slug: "{{year}}-{{month}}-{{day}}-{{hour}}-{{minute}}-{{second}}"
+    extension: md
+    format: frontmatter
+    summary: "{{name}}"
+    sortable_fields: [order, name]
+    fields:
+      - label: שם
+        name: name
+        widget: string
+      - label: תמונת כיסוי
+        name: imageUrl
+        widget: image
+        choose_url: true
+      - label: טקסט חלופי לתמונה
+        name: imageAlt
+        widget: string
+      - label: קישור לסרטון YouTube
+        name: youtubeUrl
+        widget: string
+        hint: "לדוגמה: https://www.youtube.com/watch?v=..."
+      - label: סדר תצוגה
+        name: order
+        widget: number
+        default: 0
+        value_type: int
+        hint: "מספר קטן יותר = מופיע קודם"
+
+  - name: podcast
+    label: פודקאסט
+    label_singular: פרק
+    folder: src/content/podcast
+    create: true
+    delete: true
+    identifier_field: title
+    slug: "{{year}}-{{month}}-{{day}}-{{hour}}-{{minute}}-{{second}}"
+    extension: md
+    format: frontmatter
+    summary: "{{title}}"
+    sortable_fields: [order, title]
+    fields:
+      - label: כותרת הפרק
+        name: title
+        widget: string
+      - label: תמונת כיסוי
+        name: imageUrl
+        widget: image
+        choose_url: true
+      - label: טקסט חלופי לתמונה
+        name: imageAlt
+        widget: string
+      - label: קישור לסרטון YouTube
+        name: youtubeUrl
+        widget: string
+        hint: "לדוגמה: https://www.youtube.com/watch?v=..."
+      - label: סדר תצוגה
+        name: order
+        widget: number
+        default: 0
+        value_type: int
+        hint: "מספר קטן יותר = מופיע קודם"

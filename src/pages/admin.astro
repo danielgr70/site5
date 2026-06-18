@@ -32,6 +32,30 @@
             width: 100%;
             box-sizing: border-box;
         }
+
+        /*
+         * Split pane RTL: layout nativo hebreo (campos derecha, preview izquierda)
+         * y drag correcto. react-split-pane calcula en LTR; invierte el delta
+         * solo cuando los panes tienen flex order distinto (no con row-reverse).
+         */
+        #nc-root .SplitPane {
+            direction: ltr !important;
+        }
+
+        #nc-root .SplitPane .Pane2 {
+            order: 1;
+            direction: rtl !important;
+        }
+
+        #nc-root .SplitPane .Resizer {
+            order: 2;
+        }
+
+        #nc-root .SplitPane .Pane1 {
+            order: 3;
+            direction: rtl !important;
+            text-align: right;
+        }
     </style>
 </head>
 <body>
