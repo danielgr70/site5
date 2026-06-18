@@ -2843,23 +2843,26 @@ body h6, body .ts-h6 {
     opacity: 1;
 }
 
-/* Customers opinions: softer rounded cards inside owl */
-#costumers-opinions .owl-carousel .card {
-    border-radius: 1.35rem;
-    overflow: hidden;
-}
-
-#costumers-opinions .owl-carousel .card .card-img,
-#costumers-opinions .owl-carousel .card .card-img-overlay {
-    border-radius: inherit;
-}
-
+/* Customers opinions + podcast: uniform card size (CMS images may vary) */
+#costumers-opinions .owl-carousel .card,
 #my-podcast .owl-carousel .card {
     border-radius: 1.35rem;
     overflow: hidden;
+    aspect-ratio: 16 / 9;
+    margin-bottom: 0;
 }
 
-#my-podcast .owl-carousel .card .card-img,
+#costumers-opinions .owl-carousel .card .card-img,
+#my-podcast .owl-carousel .card .card-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+#costumers-opinions .owl-carousel .card .card-img-overlay,
 #my-podcast .owl-carousel .card .card-img-overlay {
     border-radius: inherit;
 }
