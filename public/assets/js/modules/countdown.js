@@ -6,13 +6,25 @@ export function setupCountdown() {
     const timerEl = document.getElementById("countdown-timer");
     if (!daysEl || !hoursEl || !minutesEl || !secondsEl || !timerEl) return;
 
-    const targetDate = new Date("2026-07-07T17:00:00").getTime();
+    const targetRaw = timerEl.dataset.countdownTarget;
+    if (!targetRaw) return;
+
+    const targetDate = new Date(targetRaw).getTime();
+    if (Number.isNaN(targetDate)) return;
+
+    const endedMessage =
+        timerEl.dataset.countdownEnded ||
+        "המחזור כבר התחיל - ניתן להירשם למחזור הבא";
 
     const countdown = setInterval(function () {
         const distance = targetDate - Date.now();
         if (distance < 0) {
             clearInterval(countdown);
-            timerEl.innerHTML = "<h3 class='mb-0 text-slate-800'>המחזור כבר התחיל - ניתן להירשם למחזור הבא</h3>";
+            timerEl.replaceChildren();
+            const heading = document.createElement("h3");
+            heading.className = "mb-0 text-slate-800";
+            heading.textContent = endedMessage;
+            timerEl.appendChild(heading);
             return;
         }
 

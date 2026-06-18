@@ -1,0 +1,15 @@
+---
+showPopup: true
+badge: הטבה לזמן מוגבל
+title: כנס "מתחברים לאור"
+imageUrl: ""
+imageAlt: איור כנס — קהל, במה ואור
+footnote: מספר המקומות מוגבל — שמרו מקום בזמן
+ctaText: לשמירת מקום בכנס
+ctaHref: https://lp.vp4.me/ikhh
+ctaNewTab: true
+ctaGaEvent: infinity_lp_click
+ctaGaPlacement: modal_oferta
+---
+
+ערב עוצמתי לבעלי עסקים/יזמים/אנשים שמרגישים שהגיע הזמן להפסיק רק לשרוד ולהתחיל לחיות, ליצור ולהגשים באמת.

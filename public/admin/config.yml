@@ -29,6 +29,139 @@ slug:
   sanitize_replacement: "-"
 
 collections:
+  - name: hero_event
+    label: אירוע בראש הדף (Hero)
+    files:
+      - label: כנס / אירוע
+        name: event
+        file: src/content/hero-event/event.md
+        extension: md
+        format: frontmatter
+        fields:
+          - label: הצג אירוע בראש הדף
+            name: showEvent
+            widget: boolean
+            default: true
+            hint: "כבוי = מוצג טקסט קבוע לימים רגילים (עם כפתור צור קשר)"
+          - label: כותרת עליונה (אדום)
+            name: kicker
+            widget: string
+          - label: כותרת הכנס
+            name: title
+            widget: string
+          - label: תיאור
+            name: body
+            widget: markdown
+          - label: מיקום
+            name: location
+            widget: string
+          - label: יום / שעה
+            name: dayLabel
+            widget: string
+          - label: תאריך
+            name: dateLabel
+            widget: string
+          - label: הצג הנחה מוקדמת
+            name: showDiscount
+            widget: boolean
+            default: true
+          - label: טקסט מועד הנחה
+            name: discountDeadline
+            widget: string
+            required: false
+          - label: טקסט ההנחה
+            name: discountText
+            widget: string
+            required: false
+          - label: כותרת ספירה לאחור
+            name: countdownLabel
+            widget: string
+            default: "הכנס בעוד:"
+          - label: תאריך ושעת הכנס
+            name: countdownTarget
+            widget: datetime
+            format: "YYYY-MM-DDTHH:mm"
+            date_format: "DD/MM/YYYY"
+            time_format: "HH:mm"
+          - label: הודעה כשהספירה נגמרת
+            name: countdownEndedMessage
+            widget: string
+          - label: טקסט כפתור
+            name: ctaText
+            widget: string
+          - label: קישור כפתור
+            name: ctaHref
+            widget: string
+          - label: פתיחה בטאב חדש
+            name: ctaNewTab
+            widget: boolean
+            default: true
+          - label: אירוע Analytics (אופציונלי)
+            name: ctaGaEvent
+            widget: string
+            required: false
+          - label: מיקום Analytics (אופציונלי)
+            name: ctaGaPlacement
+            widget: string
+            required: false
+
+  - name: hero_popup
+    label: חלון קופץ (Popup)
+    files:
+      - label: הצעה / אירוע
+        name: popup
+        file: src/content/hero-popup/popup.md
+        extension: md
+        format: frontmatter
+        fields:
+          - label: הצג חלון קופץ
+            name: showPopup
+            widget: boolean
+            default: true
+          - label: תג עליון (ורוד)
+            name: badge
+            widget: string
+            hint: "לדוגמה: הטבה לזמן מוגבל"
+          - label: כותרת
+            name: title
+            widget: string
+          - label: תיאור
+            name: body
+            widget: markdown
+          - label: תמונת איור (אופציונלי)
+            name: imageUrl
+            widget: image
+            required: false
+            choose_url: true
+            hint: "ריק = איור ברירת מחדל"
+          - label: טקסט חלופי לתמונה
+            name: imageAlt
+            widget: string
+            required: false
+          - label: טקסט מתחת לאיור
+            name: footnote
+            widget: string
+            required: false
+            hint: "לדוגמה: מספר המקומות מוגבל — שמרו מקום בזמן"
+          - label: טקסט כפתור
+            name: ctaText
+            widget: string
+          - label: קישור כפתור
+            name: ctaHref
+            widget: string
+          - label: פתיחה בטאב חדש
+            name: ctaNewTab
+            widget: boolean
+            default: true
+          - label: אירוע Analytics (אופציונלי)
+            name: ctaGaEvent
+            widget: string
+            required: false
+          - label: מיקום Analytics (אופציונלי)
+            name: ctaGaPlacement
+            widget: string
+            required: false
+
   - name: services
     label: שירותים
     label_singular: שירות

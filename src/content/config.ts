@@ -83,6 +83,55 @@ const events = defineCollection({
   }),
 });
 
+const heroEvent = defineCollection({
+  type: "content",
+  schema: z.object({
+    showEvent: z.boolean().default(true),
+    kicker: z.string(),
+    title: z.string(),
+    location: z.string(),
+    dayLabel: z.string(),
+    dateLabel: z.string(),
+    showDiscount: z.boolean().default(true),
+    discountDeadline: z.string().optional().default(""),
+    discountText: z.string().optional().default(""),
+    countdownLabel: z.string().default("הכנס בעוד:"),
+    countdownTarget: z.preprocess((val) => {
+      if (val === undefined || val === null || val === "") return "";
+      if (val instanceof Date) {
+        const pad = (n: number) => String(n).padStart(2, "0");
+        return `${val.getFullYear()}-${pad(val.getMonth() + 1)}-${pad(val.getDate())}T${pad(val.getHours())}:${pad(val.getMinutes())}:00`;
+      }
+      return val;
+    }, z.string()),
+    countdownEndedMessage: z.string().default(
+      "המחזור כבר התחיל - ניתן להירשם למחזור הבא"
+    ),
+    ctaText: z.string(),
+    ctaHref: z.string(),
+    ctaNewTab: z.boolean().default(true),
+    ctaGaEvent: z.string().optional().default(""),
+    ctaGaPlacement: z.string().optional().default(""),
+  }),
+});
+
+const heroPopup = defineCollection({
+  type: "content",
+  schema: z.object({
+    showPopup: z.boolean().default(true),
+    badge: z.string(),
+    title: z.string(),
+    footnote: z.string().optional().default(""),
+    imageUrl: z.string().optional().default(""),
+    imageAlt: z.string().optional().default(""),
+    ctaText: z.string(),
+    ctaHref: z.string(),
+    ctaNewTab: z.boolean().default(true),
+    ctaGaEvent: z.string().optional().default(""),
+    ctaGaPlacement: z.string().optional().default(""),
+  }),
+});
+
 export const collections = {
   reviews,
   "customer-videos": customerVideos,
@@ -90,4 +139,6 @@ export const collections = {
   services,
   products,
   events,
+  "hero-event": heroEvent,
+  "hero-popup": heroPopup,
 };

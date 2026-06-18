@@ -1,5 +1,5 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, getEntry } from "astro:content";
 import Layout from '../layouts/Layout.astro';
 
 const googleReviewsUrl =
@@ -79,6 +79,30 @@ function buildGaParams(placement, eventId) {
     if (eventId) params.event_id = eventId;
     return Object.keys(params).length ? JSON.stringify(params) : undefined;
 }
+
+const heroEventEntry = await getEntry("hero-event", "event");
+if (!heroEventEntry) {
+    throw new Error("Missing src/content/hero-event/event.md");
+}
+const heroEvent = {
+    ...heroEventEntry.data,
+    description: heroEventEntry.body.trim(),
+};
+const heroEventCtaGaParams = buildGaParams(heroEvent.ctaGaPlacement, undefined);
+const heroShowEventDiscount =
+    heroEvent.showDiscount &&
+    heroEvent.discountDeadline &&
+    heroEvent.discountText;
+
+const heroPopupEntry = await getEntry("hero-popup", "popup");
+if (!heroPopupEntry) {
+    throw new Error("Missing src/content/hero-popup/popup.md");
+}
+const heroPopup = {
+    ...heroPopupEntry.data,
+    description: heroPopupEntry.body.trim(),
+};
+const heroPopupCtaGaParams = buildGaParams(heroPopup.ctaGaPlacement, undefined);
 
 function getInitials(name) {
     if (!name) return "א";
@@ -193,81 +217,113 @@ function getInitials(name) {
                         <img src="/assets/img/orit-logo.webp" alt="לוגו — אורית גרושטיין, מאמנת אישית ועסקית" width="1604" height="1163" loading="eager" fetchpriority="high" decoding="async"
                             style="max-width: 60%; max-height:60%; height:auto; width:auto">
 
-                        <div
-                            class="mt-4 w-full max-w-2xl rounded-2xl border border-slate-200 bg-white/85 p-4 md:p-5 shadow-sm">
-                            <p class="mb-1 text-xs md:text-sm font-semibold text-red-600 tracking-wide">ההרשמה בעיצומה
-                            </p>
-                            <h2 class="mb-2 text-slate-900 font-bold text-lg md:text-xl">כנס "מתחברים לאור"</h2>
-                            <p class="mb-3 text-sm md:text-base text-slate-600">
-                                ערב עוצמתי לבעלי עסקים/יזמים/אנשים שמרגישים שהגיע הזמן להפסיק רק לשרוד
-                                ולהתחיל לחיות, ליצור ולהגשים באמת.
-                            </p>
-                            <p
-                                class="mb-3 flex flex-wrap items-center justify-center md:justify-start gap-x-2 gap-y-1.5 text-xs md:text-sm text-slate-700">
-                                <span
-                                    class="inline-flex items-center rounded-full bg-slate-100 px-2.5 py-1 font-semibold text-slate-800">ירושלים</span>
-                                <span class="hidden sm:inline text-slate-300" aria-hidden="true">|</span>
-                                <span
-                                    class="inline-flex items-center rounded-full bg-slate-100 px-2.5 py-1 font-medium">יום
-                                    שלישי בערב</span>
-                                <span class="hidden sm:inline text-slate-300" aria-hidden="true">|</span>
-                                <span
-                                    class="inline-flex items-center rounded-full bg-blue-50 px-2.5 py-1 font-bold text-blue-700">7.7.26</span>
-                                <span class="hidden sm:inline text-slate-300" aria-hidden="true">|</span>
-                                <span
-                                    class="inline-flex items-center rounded-full border border-amber-200/90 bg-amber-50 px-2.5 py-1 font-medium text-amber-950">
-                                    <span class="text-amber-800/90">עד ה־22.6</span>
-                                    <span class="mx-1.5 text-amber-300" aria-hidden="true">·</span>
-                                    <span class="font-bold text-red-600">50 ש״ח הנחה</span>
-                                </span>
-                            </p>
-                            <div
-                                class="rounded-xl border border-slate-100 bg-gradient-to-b from-slate-50/90 to-white px-3 pt-3 pb-1.5 md:px-4 md:pt-3.5 md:pb-2">
-                                <p
-                                    class="mb-2.5 text-center text-sm md:text-base font-bold text-slate-800 tracking-wide">
-                                    <span class="text-blue-600">הכנס בעוד:</span>
-                                </p>
-                                <div class="flex flex-row-reverse items-end justify-center text-center gap-2 pb-0"
-                                    id="countdown-timer" style="font-size:1rem;">
-                                    <div class="px-3 py-1.5 bg-white border border-slate-100 rounded-xl shadow-sm"
-                                        style="min-width: 80px;">
-                                        <div id="days" class="mb-0 leading-none font-bold text-blue-600 text-xl">00
+                        {heroEvent.showEvent ? (
+                            <>
+                                <div
+                                    class="mt-4 w-full max-w-2xl rounded-2xl border border-slate-200 bg-white/85 p-4 md:p-5 shadow-sm">
+                                    <p class="mb-1 text-xs md:text-sm font-semibold text-red-600 tracking-wide">{heroEvent.kicker}</p>
+                                    <h2 class="mb-2 text-slate-900 font-bold text-lg md:text-xl">{heroEvent.title}</h2>
+                                    <p class="mb-3 text-sm md:text-base text-slate-600">
+                                        {heroEvent.description}
+                                    </p>
+                                    <p
+                                        class="mb-3 flex flex-wrap items-center justify-center md:justify-start gap-x-2 gap-y-1.5 text-xs md:text-sm text-slate-700">
+                                        <span
+                                            class="inline-flex items-center rounded-full bg-slate-100 px-2.5 py-1 font-semibold text-slate-800">{heroEvent.location}</span>
+                                        <span class="hidden sm:inline text-slate-300" aria-hidden="true">|</span>
+                                        <span
+                                            class="inline-flex items-center rounded-full bg-slate-100 px-2.5 py-1 font-medium">{heroEvent.dayLabel}</span>
+                                        <span class="hidden sm:inline text-slate-300" aria-hidden="true">|</span>
+                                        <span
+                                            class="inline-flex items-center rounded-full bg-blue-50 px-2.5 py-1 font-bold text-blue-700">{heroEvent.dateLabel}</span>
+                                        {heroShowEventDiscount && (
+                                            <>
+                                                <span class="hidden sm:inline text-slate-300" aria-hidden="true">|</span>
+                                                <span
+                                                    class="inline-flex items-center rounded-full border border-amber-200/90 bg-amber-50 px-2.5 py-1 font-medium text-amber-950">
+                                                    <span class="text-amber-800/90">{heroEvent.discountDeadline}</span>
+                                                    <span class="mx-1.5 text-amber-300" aria-hidden="true">·</span>
+                                                    <span class="font-bold text-red-600">{heroEvent.discountText}</span>
+                                                </span>
+                                            </>
+                                        )}
+                                    </p>
+                                    <div
+                                        class="rounded-xl border border-slate-100 bg-gradient-to-b from-slate-50/90 to-white px-3 pt-3 pb-1.5 md:px-4 md:pt-3.5 md:pb-2">
+                                        <p
+                                            class="mb-2.5 text-center text-sm md:text-base font-bold text-slate-800 tracking-wide">
+                                            <span class="text-blue-600">{heroEvent.countdownLabel}</span>
+                                        </p>
+                                        <div class="flex flex-row-reverse items-end justify-center text-center gap-2 pb-0"
+                                            id="countdown-timer"
+                                            data-countdown-target={heroEvent.countdownTarget}
+                                            data-countdown-ended={heroEvent.countdownEndedMessage}
+                                            style="font-size:1rem;">
+                                            <div class="px-3 py-1.5 bg-white border border-slate-100 rounded-xl shadow-sm"
+                                                style="min-width: 80px;">
+                                                <div id="days" class="mb-0 leading-none font-bold text-blue-600 text-xl">00</div>
+                                                <small class="block mt-0 leading-none text-[11px]">ימים</small>
+                                            </div>
+                                            <div class="px-2.5 py-1.5 bg-white border border-slate-100 rounded-xl shadow-sm"
+                                                style="min-width: 58px;">
+                                                <div id="hours" class="mb-0 leading-none font-bold text-blue-600 text-base">00</div>
+                                                <small class="block mt-0 leading-none text-[10px]">שעות</small>
+                                            </div>
+                                            <div class="px-2.5 py-1.5 bg-white border border-slate-100 rounded-xl shadow-sm"
+                                                style="min-width: 58px;">
+                                                <div id="minutes" class="mb-0 leading-none font-bold text-blue-600 text-base">00</div>
+                                                <small class="block mt-0 leading-none text-[10px]">דקות</small>
+                                            </div>
+                                            <div class="px-2.5 py-1.5 bg-white border border-slate-100 rounded-xl shadow-sm"
+                                                style="min-width: 58px;">
+                                                <div id="seconds" class="mb-0 leading-none font-bold text-blue-600 text-base">00</div>
+                                                <small class="block mt-0 leading-none text-[10px]">שניות</small>
+                                            </div>
                                         </div>
-                                        <small class="block mt-0 leading-none text-[11px]">ימים</small>
-                                    </div>
-                                    <div class="px-2.5 py-1.5 bg-white border border-slate-100 rounded-xl shadow-sm"
-                                        style="min-width: 58px;">
-                                        <div id="hours" class="mb-0 leading-none font-bold text-blue-600 text-base">00
-                                        </div>
-                                        <small class="block mt-0 leading-none text-[10px]">שעות</small>
-                                    </div>
-                                    <div class="px-2.5 py-1.5 bg-white border border-slate-100 rounded-xl shadow-sm"
-                                        style="min-width: 58px;">
-                                        <div id="minutes" class="mb-0 leading-none font-bold text-blue-600 text-base">00
-                                        </div>
-                                        <small class="block mt-0 leading-none text-[10px]">דקות</small>
-                                    </div>
-                                    <div class="px-2.5 py-1.5 bg-white border border-slate-100 rounded-xl shadow-sm"
-                                        style="min-width: 58px;">
-                                        <div id="seconds" class="mb-0 leading-none font-bold text-blue-600 text-base">00
-                                        </div>
-                                        <small class="block mt-0 leading-none text-[10px]">שניות</small>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
 
-                        <a href="https://lp.vp4.me/ikhh" target="_blank"
-                            class="inline-flex flex-row-reverse items-center gap-2 bg-red-600 hover:bg-red-700 text-white text-sm font-semibold px-5 py-2.5 rounded-full ts-scroll mt-4 shadow-sm transition-all duration-300 ease-in-out hover:shadow-md"
-                            data-animate="ts-fadeInUp" data-delay=".2s" data-ga-event="infinity_lp_click"
-                            data-ga-params='{"placement":"hero"}'>
-                            לשמירת מקום בכנס
-                            <svg class="icon-svg icon-arrow-right small ts-opacity__50" viewBox="0 0 24 24"
-                                aria-hidden="true">
-                                <path fill="currentColor" d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </a>
+                                <a href={heroEvent.ctaHref}
+                                    target={heroEvent.ctaNewTab ? "_blank" : undefined}
+                                    rel={heroEvent.ctaNewTab ? "noopener noreferrer" : undefined}
+                                    class="inline-flex flex-row-reverse items-center gap-2 bg-red-600 hover:bg-red-700 text-white text-sm font-semibold px-5 py-2.5 rounded-full ts-scroll mt-4 shadow-sm transition-all duration-300 ease-in-out hover:shadow-md"
+                                    data-animate="ts-fadeInUp" data-delay=".2s"
+                                    data-ga-event={heroEvent.ctaGaEvent || undefined}
+                                    data-ga-params={heroEventCtaGaParams}>
+                                    {heroEvent.ctaText}
+                                    <svg class="icon-svg icon-arrow-right small ts-opacity__50" viewBox="0 0 24 24"
+                                        aria-hidden="true">
+                                        <path fill="currentColor" d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </a>
+                            </>
+                        ) : (
+                            <>
+                                <div
+                                    class="mt-4 w-full max-w-2xl rounded-2xl border border-slate-200 bg-white/85 p-4 md:p-5 shadow-sm">
+                                    <p class="mb-1 text-xs md:text-sm font-semibold text-blue-600 tracking-wide">מאמנת אישית ועסקית</p>
+                                    <h2 class="mb-2 text-slate-900 font-bold text-lg md:text-xl">לחיות, ליצור ולהגשים — באמת</h2>
+                                    <p class="mb-0 text-sm md:text-base text-slate-600">
+                                        כבר למעלה מ־16 שנה שאני בעלת עסק, וכמעט עשור שאני מלווה אנשים ובעלי עסקים בתהליכי שינוי, צמיחה והגשמה.
+                                        אם אתם מרגישים שהגיע הזמן לדיוק, לחיבור ולתוצאות שמתאימות לכם — אשמח לשוחח.
+                                    </p>
+                                </div>
+
+                                <a href="#form-contact"
+                                    class="inline-flex flex-row-reverse items-center gap-2 bg-red-600 hover:bg-red-700 text-white text-sm font-semibold px-5 py-2.5 rounded-full ts-scroll mt-4 shadow-sm transition-all duration-300 ease-in-out hover:shadow-md"
+                                    data-animate="ts-fadeInUp" data-delay=".2s"
+                                    data-ga-event="scroll_to_contact"
+                                    data-ga-params='{"placement":"hero"}'>
+                                    צור קשר
+                                    <svg class="icon-svg icon-arrow-right small ts-opacity__50" viewBox="0 0 24 24"
+                                        aria-hidden="true">
+                                        <path fill="currentColor" d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </a>
+                            </>
+                        )}
                     </div>
                     <!--end col-md-7-->
                 </div>
@@ -925,76 +981,85 @@ function getInitials(name) {
     <!--end #footer-->
     <!--end page-->
 
-    <div class="modal side-popup fade fixed inset-0 z-[100] hidden" id="modalOferta" tabindex="-1" role="dialog"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content modal-kenes-card relative rounded-2xl border border-slate-200 bg-white/95 shadow-2xl"
-                style="direction: rtl;">
-                <button id="modal-oferta-close" type="button"
-                    class="inline-flex items-center justify-center h-9 w-9 rounded-full text-slate-500 hover:text-slate-800 hover:bg-slate-100 shrink-0 absolute left-2 top-2 text-xl z-10 transition-colors"
-                    aria-label="סגור">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <div class="p-4 md:p-5 text-right">
-                    <span class="modal-kenes-badge">הטבה לזמן מוגבל</span>
-                    <h4 class="modal-kenes-title mt-2 mb-2 text-slate-900 font-bold text-lg leading-snug">כנס "מתחברים
-                        לאור"</h4>
-                    <p class="modal-kenes-desc mb-3 text-sm text-slate-600 leading-relaxed">
-                        ערב עוצמתי לבעלי עסקים/יזמים/אנשים שמרגישים שהגיע הזמן להפסיק רק לשרוד
-                        ולהתחיל לחיות, ליצור ולהגשים באמת.
-                    </p>
-                    <div class="modal-kenes-illustration rounded-xl border border-slate-100 bg-gradient-to-b from-slate-50/90 to-white px-2 py-1.5 mb-2"
-                        aria-hidden="true">
-                        <svg class="mx-auto block w-full max-w-[200px] h-auto" viewBox="0 0 280 120" fill="none"
-                            xmlns="http://www.w3.org/2000/svg" role="img">
-                            <title>איור כנס — קהל, במה ואור</title>
-                            <ellipse cx="140" cy="108" rx="118" ry="10" fill="#e2e8f0" opacity="0.7" />
-                            <path d="M28 92h224v8H28z" fill="#cbd5e1" />
-                            <path d="M52 92V68h176v24H52z" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.2" />
-                            <path d="M118 68V42h44v26h-44z" fill="#fff" stroke="#64748b" stroke-width="1.2" />
-                            <path d="M128 42h24v-14h-24v14z" fill="#dbeafe" stroke="#3b82f6" stroke-width="1" />
-                            <path d="M140 12 L118 68 L162 68 Z" fill="url(#kenesSpot)" opacity="0.35" />
-                            <circle cx="140" cy="22" r="14" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.5" />
-                            <path
-                                d="M140 10v6M140 34v4M126 22h-6M154 22h6M129 15l-4-4M151 15l4-4M129 29l-4 4M151 29l4 4"
-                                stroke="#f59e0b" stroke-width="1.5" stroke-linecap="round" />
-                            <circle cx="78" cy="82" r="9" fill="#fecaca" stroke="#dc2626" stroke-width="1.2" />
-                            <path d="M78 91v6" stroke="#64748b" stroke-width="1.5" stroke-linecap="round" />
-                            <circle cx="112" cy="86" r="8" fill="#bfdbfe" stroke="#2563eb" stroke-width="1.2" />
-                            <path d="M112 94v5" stroke="#64748b" stroke-width="1.5" stroke-linecap="round" />
-                            <circle cx="168" cy="86" r="8" fill="#bfdbfe" stroke="#2563eb" stroke-width="1.2" />
-                            <path d="M168 94v5" stroke="#64748b" stroke-width="1.5" stroke-linecap="round" />
-                            <circle cx="202" cy="82" r="9" fill="#fecaca" stroke="#dc2626" stroke-width="1.2" />
-                            <path d="M202 91v6" stroke="#64748b" stroke-width="1.5" stroke-linecap="round" />
-                            <path d="M88 58 Q140 48 192 58" stroke="#93c5fd" stroke-width="1.5" fill="none"
-                                stroke-dasharray="4 3" opacity="0.8" />
-                            <defs>
-                                <linearGradient id="kenesSpot" x1="140" y1="12" x2="140" y2="68"
-                                    gradientUnits="userSpaceOnUse">
-                                    <stop stop-color="#fde68a" />
-                                    <stop offset="1" stop-color="#93c5fd" stop-opacity="0" />
-                                </linearGradient>
-                            </defs>
-                        </svg>
-                    </div>
-                    <p class="modal-kenes-note mb-3 text-center text-xs font-semibold text-slate-500">מספר המקומות מוגבל
-                        — שמרו מקום בזמן</p>
-                    <div class="text-center">
-                        <a href="https://lp.vp4.me/ikhh" target="_blank" rel="noopener noreferrer"
-                            class="inline-flex flex-row-reverse items-center gap-2 bg-red-600 hover:bg-red-700 text-white text-sm font-semibold px-5 py-2.5 rounded-full shadow-sm transition-all duration-300 ease-in-out hover:shadow-md"
-                            data-ga-event="infinity_lp_click" data-ga-params='{"placement":"modal_oferta"}'>
-                            לשמירת מקום בכנס
-                            <svg class="icon-svg icon-arrow-right small ts-opacity__50 w-4 h-4" viewBox="0 0 24 24"
-                                aria-hidden="true">
-                                <path fill="currentColor" d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </a>
+    {heroPopup.showPopup && (
+        <div class="modal side-popup fade fixed inset-0 z-[100] hidden" id="modalOferta" tabindex="-1" role="dialog"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content modal-kenes-card relative rounded-2xl border border-slate-200 bg-white/95 shadow-2xl"
+                    style="direction: rtl;">
+                    <button id="modal-oferta-close" type="button"
+                        class="inline-flex items-center justify-center h-9 w-9 rounded-full text-slate-500 hover:text-slate-800 hover:bg-slate-100 shrink-0 absolute left-2 top-2 text-xl z-10 transition-colors"
+                        aria-label="סגור">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <div class="p-4 md:p-5 text-right">
+                        <span class="modal-kenes-badge">{heroPopup.badge}</span>
+                        <h4 class="modal-kenes-title mt-2 mb-2 text-slate-900 font-bold text-lg leading-snug">{heroPopup.title}</h4>
+                        <p class="modal-kenes-desc mb-3 text-sm text-slate-600 leading-relaxed">
+                            {heroPopup.description}
+                        </p>
+                        <div class="modal-kenes-illustration rounded-xl border border-slate-100 bg-gradient-to-b from-slate-50/90 to-white px-2 py-1.5 mb-2"
+                            aria-hidden={heroPopup.imageUrl ? undefined : true}>
+                            {heroPopup.imageUrl ? (
+                                <img src={heroPopup.imageUrl} alt={heroPopup.imageAlt || ""}
+                                    class="mx-auto block w-full max-w-[200px] h-auto" loading="lazy" width="200" height="120" />
+                            ) : (
+                                <svg class="mx-auto block w-full max-w-[200px] h-auto" viewBox="0 0 280 120" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg" role="img">
+                                    <title>{heroPopup.imageAlt || "איור כנס"}</title>
+                                    <ellipse cx="140" cy="108" rx="118" ry="10" fill="#e2e8f0" opacity="0.7" />
+                                    <path d="M28 92h224v8H28z" fill="#cbd5e1" />
+                                    <path d="M52 92V68h176v24H52z" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.2" />
+                                    <path d="M118 68V42h44v26h-44z" fill="#fff" stroke="#64748b" stroke-width="1.2" />
+                                    <path d="M128 42h24v-14h-24v14z" fill="#dbeafe" stroke="#3b82f6" stroke-width="1" />
+                                    <path d="M140 12 L118 68 L162 68 Z" fill="url(#kenesSpot)" opacity="0.35" />
+                                    <circle cx="140" cy="22" r="14" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.5" />
+                                    <path
+                                        d="M140 10v6M140 34v4M126 22h-6M154 22h6M129 15l-4-4M151 15l4-4M129 29l-4 4M151 29l4 4"
+                                        stroke="#f59e0b" stroke-width="1.5" stroke-linecap="round" />
+                                    <circle cx="78" cy="82" r="9" fill="#fecaca" stroke="#dc2626" stroke-width="1.2" />
+                                    <path d="M78 91v6" stroke="#64748b" stroke-width="1.5" stroke-linecap="round" />
+                                    <circle cx="112" cy="86" r="8" fill="#bfdbfe" stroke="#2563eb" stroke-width="1.2" />
+                                    <path d="M112 94v5" stroke="#64748b" stroke-width="1.5" stroke-linecap="round" />
+                                    <circle cx="168" cy="86" r="8" fill="#bfdbfe" stroke="#2563eb" stroke-width="1.2" />
+                                    <path d="M168 94v5" stroke="#64748b" stroke-width="1.5" stroke-linecap="round" />
+                                    <circle cx="202" cy="82" r="9" fill="#fecaca" stroke="#dc2626" stroke-width="1.2" />
+                                    <path d="M202 91v6" stroke="#64748b" stroke-width="1.5" stroke-linecap="round" />
+                                    <path d="M88 58 Q140 48 192 58" stroke="#93c5fd" stroke-width="1.5" fill="none"
+                                        stroke-dasharray="4 3" opacity="0.8" />
+                                    <defs>
+                                        <linearGradient id="kenesSpot" x1="140" y1="12" x2="140" y2="68"
+                                            gradientUnits="userSpaceOnUse">
+                                            <stop stop-color="#fde68a" />
+                                            <stop offset="1" stop-color="#93c5fd" stop-opacity="0" />
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
+                            )}
+                        </div>
+                        {heroPopup.footnote && (
+                            <p class="modal-kenes-note mb-3 text-center text-xs font-semibold text-slate-500">{heroPopup.footnote}</p>
+                        )}
+                        <div class="text-center">
+                            <a href={heroPopup.ctaHref}
+                                target={heroPopup.ctaNewTab ? "_blank" : undefined}
+                                rel={heroPopup.ctaNewTab ? "noopener noreferrer" : undefined}
+                                class="inline-flex flex-row-reverse items-center gap-2 bg-red-600 hover:bg-red-700 text-white text-sm font-semibold px-5 py-2.5 rounded-full shadow-sm transition-all duration-300 ease-in-out hover:shadow-md"
+                                data-ga-event={heroPopup.ctaGaEvent || undefined}
+                                data-ga-params={heroPopupCtaGaParams}>
+                                {heroPopup.ctaText}
+                                <svg class="icon-svg icon-arrow-right small ts-opacity__50 w-4 h-4" viewBox="0 0 24 24"
+                                    aria-hidden="true">
+                                    <path fill="currentColor" d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    )}
 
     <a href="https://wa.me/972523003410" class="floating-wa-btn" target="_blank" rel="noopener noreferrer"
         aria-label="צור קשר בוואטסאפ" title="WhatsApp" data-ga-event="whatsapp_open"
