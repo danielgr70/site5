@@ -110,12 +110,12 @@ export default config({
       columns: ["order", "kicker"],
       schema: {
         title: hebrewTitle("כותרת"),
-        kicker: fields.text({ label: "תווית עליונה" }),
+        kicker: fields.text({ label: "תווית עליונה", defaultValue: "" }),
         imageUrl: siteImage("תמונה"),
         order: fields.integer({ label: "סדר תצוגה", defaultValue: 0 }),
         animateDelay: fields.text({ label: "עיכוב אנימציה (אופציונלי)" }),
-        ctaText: fields.text({ label: "טקסט כפתור" }),
-        ctaHref: fields.text({ label: "קישור כפתור" }),
+        ctaText: fields.text({ label: "טקסט כפתור", defaultValue: "" }),
+        ctaHref: fields.text({ label: "קישור כפתור", defaultValue: "" }),
         ctaNewTab: fields.checkbox({
           label: "פתיחה בטאב חדש",
           defaultValue: false,
