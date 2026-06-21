@@ -46,6 +46,7 @@ body,
 }
 
 #orit-deploy-bar {
+    --orit-deploy-bar-height: 3.25rem;
     position: fixed;
     top: 0;
     left: 0;
@@ -106,5 +107,10 @@ body,
 }
 
 body.orit-deploy-bar-visible {
-    padding-top: 3.25rem;
+    padding-top: var(--orit-deploy-bar-height);
+}
+
+/* Header sticky de Decap: evitar que quede tapado al hacer scroll */
+body.orit-deploy-bar-visible #nc-root > header {
+    top: var(--orit-deploy-bar-height) !important;
 }
