@@ -1,0 +1,11 @@
+---
+import KeystaticAdmin from "../../components/KeystaticAdmin";
+
+export const prerender = false;
+---
+
+<style is:global>
+  @import "../../styles/keystatic-admin.css";
+</style>
+
+<KeystaticAdmin client:only="react" />

@@ -1,9 +1,31 @@
 import { defineCollection, z } from "astro:content";
 
+/** Keystatic `fields.slug` se guarda como `{ name, slug }` en el frontmatter. */
+function hebrewString(defaultValue?: string) {
+  const base = defaultValue !== undefined ? z.string().default(defaultValue) : z.string();
+  return z.preprocess((val) => {
+    if (val && typeof val === "object" && val !== null && "name" in val) {
+      return (val as { name: string }).name;
+    }
+    return val;
+  }, base);
+}
+
+/** Normaliza rutas de fields.image de Keystatic para el front. */
+function assetPath(required = true) {
+  const base = required ? z.string() : z.string().optional().default("");
+  return z.preprocess((val) => {
+    if (!val) return "";
+    if (typeof val !== "string") return val;
+    if (val.startsWith("http") || val.startsWith("/")) return val;
+    return `/assets/img/${val.replace(/^\//, "")}`;
+  }, base);
+}
+
 const reviews = defineCollection({
   type: "content",
   schema: z.object({
-    name: z.string(),
+    name: hebrewString(),
     date: z.string().optional().default(""),
     rating: z.number().min(1).max(5).default(5),
     photoUrl: z.string().optional().default(""),
@@ -14,8 +36,8 @@ const reviews = defineCollection({
 const customerVideos = defineCollection({
   type: "content",
   schema: z.object({
-    name: z.string(),
-    imageUrl: z.string(),
+    name: hebrewString(),
+    imageUrl: assetPath(),
     imageAlt: z.string(),
     youtubeUrl: z.string(),
     order: z.number().int().default(0),
@@ -25,8 +47,8 @@ const customerVideos = defineCollection({
 const podcast = defineCollection({
   type: "content",
   schema: z.object({
-    title: z.string(),
-    imageUrl: z.string(),
+    title: hebrewString(),
+    imageUrl: assetPath(),
     imageAlt: z.string(),
     youtubeUrl: z.string(),
     order: z.number().int().default(0),
@@ -36,8 +58,8 @@ const podcast = defineCollection({
 const services = defineCollection({
   type: "content",
   schema: z.object({
-    title: z.string(),
-    iconUrl: z.string(),
+    title: hebrewString(),
+    iconUrl: assetPath(),
     iconAlt: z.string(),
     iconClass: z.string().optional().default(""),
     iconWidth: z.number().int().positive().default(72),
@@ -50,9 +72,9 @@ const services = defineCollection({
 const products = defineCollection({
   type: "content",
   schema: z.object({
-    title: z.string(),
+    title: hebrewString(),
     kicker: z.string(),
-    imageUrl: z.string(),
+    imageUrl: assetPath(),
     order: z.number().int().default(0),
     animateDelay: z.string().optional().default(""),
     ctaText: z.string(),
@@ -66,9 +88,9 @@ const products = defineCollection({
 const events = defineCollection({
   type: "content",
   schema: z.object({
-    title: z.string(),
+    title: hebrewString(),
     dateLabel: z.string(),
-    imageUrl: z.string(),
+    imageUrl: assetPath(),
     imageAlt: z.string(),
     imageWidth: z.number().int().positive().default(640),
     imageHeight: z.number().int().positive().default(360),
@@ -88,7 +110,7 @@ const heroEvent = defineCollection({
   schema: z.object({
     showEvent: z.boolean().default(true),
     kicker: z.string(),
-    title: z.string(),
+    title: hebrewString(),
     location: z.string(),
     dayLabel: z.string(),
     dateLabel: z.string(),
@@ -120,9 +142,9 @@ const heroPopup = defineCollection({
   schema: z.object({
     showPopup: z.boolean().default(true),
     badge: z.string(),
-    title: z.string(),
+    title: hebrewString(),
     footnote: z.string().optional().default(""),
-    imageUrl: z.string().optional().default(""),
+    imageUrl: assetPath(false),
     imageAlt: z.string().optional().default(""),
     ctaText: z.string(),
     ctaHref: z.string(),

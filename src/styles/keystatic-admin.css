@@ -1,0 +1,5 @@
+/* Oculta fields.slug (מזהה קובץ) — Keystatic no expone opción nativa para esconderlo. */
+#item-edit-form div:has(> div > button[aria-label="regenerate"]),
+#item-create-form div:has(> div > button[aria-label="regenerate"]) {
+  display: none !important;
+}

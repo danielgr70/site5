@@ -1,7 +1,0 @@
----
-title: "פרק 4 - \"באנו לעולם כדי לשחק\" עם שרית אונגר"
-imageUrl: "/assets/img/podcast3.webp"
-imageAlt: "פודקאסט — פרק 4 עם שרית אונגר"
-youtubeUrl: "https://www.youtube.com/watch?v=S_AVZQ7UwMs"
-order: 3
----
