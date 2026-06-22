@@ -63,7 +63,7 @@ export default config({
           defaultValue: true,
         }),
         badge: fields.text({ label: "תג עליון (ורוד)" }),
-        title: hebrewTitle("כותרת"),
+        title: fields.text({ label: "כותרת" }),
         imageUrl: siteImage("תמונת איור"),
         imageAlt: fields.text({ label: "טקסט חלופי לתמונה" }),
         footnote: fields.text({ label: "טקסט מתחת לאיור" }),
