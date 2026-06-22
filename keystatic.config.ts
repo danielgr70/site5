@@ -2,12 +2,12 @@ import { config, collection, singleton, fields } from "@keystatic/core";
 import { ctaFields, hebrewMarkdoc, hebrewName, hebrewTitle, reviewProfilePhoto, siteImage } from "./keystatic/fields";
 
 const githubRepo =
-  import.meta.env.KEYSTATIC_GITHUB_REPO ?? "danielgr70/site5";
+  import.meta.env.PUBLIC_KEYSTATIC_GITHUB_REPO ?? "danielgr70/site5";
 
 export default config({
   locale: "he-IL",
   storage:
-    import.meta.env.KEYSTATIC_STORAGE === "github"
+    import.meta.env.PUBLIC_KEYSTATIC_STORAGE === "github"
       ? {
           kind: "github",
           repo: githubRepo as `${string}/${string}`,
