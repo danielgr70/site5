@@ -6,7 +6,7 @@
     return /^https?:\/\//i.test(url);
   }
 
-  /** Campo URL de תמונת פרופיל — sin depender de texto hebreo en el script. */
+  /** Profile photo URL field — matched by inputmode, not by label text. */
   function findPhotoUrlField(form) {
     var inputs = form.querySelectorAll('input[inputmode="url"]');
     for (var i = 0; i < inputs.length; i++) {
@@ -32,7 +32,8 @@
 
       var caption = document.createElement("span");
       caption.className = "keystatic-photo-url-preview-label";
-      caption.textContent = "תצוגה מקדימה";
+      // "תצוגה מקדימה" (Preview) — Unicode escapes avoid mojibake when charset is wrong
+      caption.textContent = "\u05EA\u05E6\u05D5\u05D2\u05D4 \u05DE\u05E7\u05D3\u05D9\u05DE\u05D4";
 
       var img = document.createElement("img");
       img.className = IMG_CLASS;
