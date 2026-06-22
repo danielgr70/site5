@@ -70,3 +70,34 @@ export const ctaFields = {
   ctaGaEvent: fields.text({ label: "אירוע Analytics (אופציונלי)" }),
   ctaGaPlacement: fields.text({ label: "מיקום Analytics (אופציונלי)" }),
 };
+
+/** תמונת פרופיל להמלצות: URL (preview ב-admin) או העלאה (preview מובנה). */
+export function reviewProfilePhoto() {
+  return fields.conditional(
+    fields.select({
+      label: "תמונת פרופיל",
+      description: "ללא תמונה, קישור חיצוני או העלאת קובץ",
+      options: [
+        { label: "ללא תמונה (ראשי תיבות)", value: "none" },
+        { label: "קישור (URL)", value: "url" },
+        { label: "העלאת תמונה", value: "upload" },
+      ],
+      defaultValue: "none",
+    }),
+    {
+      none: fields.empty(),
+      url: fields.url({
+        label: "כתובת URL",
+        description: "לדוגמה: קישור תמונה מגוגל",
+      }),
+      upload: fields.object({
+        photoUrl: fields.image({
+          label: "תמונה",
+          directory: imageDir,
+          publicPath: imagePublicPath,
+          description: "נשמרת ב-public/assets/img/{slug}/photoUrl.*",
+        }),
+      }),
+    }
+  );
+}

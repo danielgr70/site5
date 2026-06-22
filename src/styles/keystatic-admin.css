@@ -3,3 +3,30 @@
 #item-create-form div:has(> div > button[aria-label="regenerate"]) {
   display: none !important;
 }
+
+/* Preview circular para כתובת URL (תמונת פרופיל — המלצות). */
+.keystatic-photo-url-preview-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
+  margin-top: 0.5rem;
+}
+
+.keystatic-photo-url-preview-wrap[hidden] {
+  display: none !important;
+}
+
+.keystatic-photo-url-preview-label {
+  font-size: 0.75rem;
+  color: #909090;
+}
+
+.keystatic-photo-url-preview {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #6e6e6e;
+  background: #2c2c2c;
+}

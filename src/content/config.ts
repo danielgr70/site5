@@ -22,15 +22,55 @@ function assetPath(required = true) {
   }, base);
 }
 
+function normalizeReviewPhotoPath(val: string): string {
+  if (!val) return "";
+  if (val.startsWith("http") || val.startsWith("/")) return val;
+  return `/assets/img/${val.replace(/^\//, "")}`;
+}
+
+function resolveReviewPhotoUrl(photo: unknown, legacyUrl?: string): string {
+  const legacy = legacyUrl?.trim();
+  if (legacy) return legacy;
+  if (!photo || typeof photo !== "object") return "";
+
+  const { discriminant, value } = photo as {
+    discriminant?: string;
+    value?: string | { photoUrl?: string };
+  };
+  if (!discriminant || discriminant === "none") return "";
+  if (discriminant === "url") {
+    return typeof value === "string" ? value.trim() : "";
+  }
+  if (discriminant === "upload") {
+    const path =
+      typeof value === "string"
+        ? value
+        : value && typeof value === "object"
+          ? (value.photoUrl ?? "")
+          : "";
+    return normalizeReviewPhotoPath(path);
+  }
+  return "";
+}
+
 const reviews = defineCollection({
   type: "content",
-  schema: z.object({
-    name: hebrewString(),
-    date: z.string().optional().default(""),
-    rating: z.number().min(1).max(5).default(5),
-    photoUrl: z.string().optional().default(""),
-    order: z.number().int().default(0),
-  }),
+  schema: z
+    .object({
+      name: hebrewString(),
+      date: z.string().optional().default(""),
+      rating: z.number().min(1).max(5).default(5),
+      photo: z.any().optional(),
+      photoUrl: z.string().optional().default(""),
+      order: z.number().int().default(0),
+    })
+    .transform((data) => {
+      const { photo, photoUrl: legacy, ...rest } = data;
+      return {
+        ...rest,
+        photoUrl: resolveReviewPhotoUrl(photo, legacy),
+      };
+    }),
 });
 
 const customerVideos = defineCollection({

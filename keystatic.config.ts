@@ -1,5 +1,5 @@
 import { config, collection, singleton, fields } from "@keystatic/core";
-import { ctaFields, hebrewMarkdoc, hebrewName, hebrewTitle, siteImage } from "./keystatic/fields";
+import { ctaFields, hebrewMarkdoc, hebrewName, hebrewTitle, reviewProfilePhoto, siteImage } from "./keystatic/fields";
 
 const githubRepo =
   import.meta.env.KEYSTATIC_GITHUB_REPO ?? "danielgr70/site5";
@@ -177,10 +177,7 @@ export default config({
           defaultValue: 5,
           validation: { min: 1, max: 5 },
         }),
-        photoUrl: fields.text({
-          label: "תמונת פרופיל (URL או ריק)",
-          description: "ריק = ראשי תיבות",
-        }),
+        photo: reviewProfilePhoto(),
         order: fields.integer({ label: "סדר תצוגה", defaultValue: 0 }),
         body: hebrewMarkdoc("טקסט ההמלצה"),
       },
