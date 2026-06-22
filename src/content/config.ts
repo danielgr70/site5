@@ -38,8 +38,8 @@ const customerVideos = defineCollection({
   schema: z.object({
     name: hebrewString(),
     imageUrl: assetPath(),
-    imageAlt: z.string(),
-    youtubeUrl: z.string(),
+    imageAlt: z.string().default(""),
+    youtubeUrl: z.string().default(""),
     order: z.number().int().default(0),
   }),
 });
@@ -49,8 +49,8 @@ const podcast = defineCollection({
   schema: z.object({
     title: hebrewString(),
     imageUrl: assetPath(),
-    imageAlt: z.string(),
-    youtubeUrl: z.string(),
+    imageAlt: z.string().default(""),
+    youtubeUrl: z.string().default(""),
     order: z.number().int().default(0),
   }),
 });
@@ -60,7 +60,7 @@ const services = defineCollection({
   schema: z.object({
     title: hebrewString(),
     iconUrl: assetPath(),
-    iconAlt: z.string(),
+    iconAlt: z.string().default(""),
     iconClass: z.string().optional().default(""),
     iconWidth: z.number().int().positive().default(72),
     iconHeight: z.number().int().positive().default(72),
@@ -89,15 +89,15 @@ const events = defineCollection({
   type: "content",
   schema: z.object({
     title: hebrewString(),
-    dateLabel: z.string(),
+    dateLabel: z.string().default(""),
     imageUrl: assetPath(),
-    imageAlt: z.string(),
+    imageAlt: z.string().default(""),
     imageWidth: z.number().int().positive().default(640),
     imageHeight: z.number().int().positive().default(360),
     order: z.number().int().default(0),
     animateDelay: z.string().optional().default(""),
-    ctaText: z.string(),
-    ctaHref: z.string(),
+    ctaText: z.string().default(""),
+    ctaHref: z.string().default(""),
     ctaNewTab: z.boolean().default(true),
     ctaGaEvent: z.string().optional().default(""),
     ctaGaPlacement: z.string().optional().default(""),

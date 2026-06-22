@@ -82,7 +82,7 @@ export default config({
       schema: {
         title: hebrewTitle("כותרת"),
         iconUrl: siteImage("אייקון"),
-        iconAlt: fields.text({ label: "טקסט חלופי לאייקון" }),
+        iconAlt: fields.text({ label: "טקסט חלופי לאייקון", defaultValue: "" }),
         iconClass: fields.text({ label: "מחלקת CSS לאייקון (אופציונלי)" }),
         iconWidth: fields.integer({
           label: "רוחב אייקון (px)",
@@ -133,9 +133,9 @@ export default config({
       columns: ["order", "dateLabel"],
       schema: {
         title: hebrewTitle("כותרת"),
-        dateLabel: fields.text({ label: "תאריך / מיקום (שורה עליונה)" }),
+        dateLabel: fields.text({ label: "תאריך / מיקום (שורה עליונה)", defaultValue: "" }),
         imageUrl: siteImage("תמונה"),
-        imageAlt: fields.text({ label: "טקסט חלופי לתמונה" }),
+        imageAlt: fields.text({ label: "טקסט חלופי לתמונה", defaultValue: "" }),
         imageWidth: fields.integer({
           label: "רוחב תמונה (px)",
           defaultValue: 640,
@@ -146,8 +146,8 @@ export default config({
         }),
         order: fields.integer({ label: "סדר תצוגה", defaultValue: 0 }),
         animateDelay: fields.text({ label: "עיכוב אנימציה (אופציונלי)" }),
-        ctaText: fields.text({ label: "טקסט כפתור" }),
-        ctaHref: fields.text({ label: "קישור כפתור" }),
+        ctaText: fields.text({ label: "טקסט כפתור", defaultValue: "" }),
+        ctaHref: fields.text({ label: "קישור כפתור", defaultValue: "" }),
         ctaNewTab: fields.checkbox({
           label: "פתיחה בטאב חדש",
           defaultValue: true,
@@ -194,8 +194,8 @@ export default config({
       schema: {
         name: hebrewName("שם"),
         imageUrl: siteImage("תמונת כיסוי"),
-        imageAlt: fields.text({ label: "טקסט חלופי לתמונה" }),
-        youtubeUrl: fields.text({ label: "קישור לסרטון YouTube" }),
+        imageAlt: fields.text({ label: "טקסט חלופי לתמונה", defaultValue: "" }),
+        youtubeUrl: fields.text({ label: "קישור לסרטון YouTube", defaultValue: "" }),
         order: fields.integer({ label: "סדר תצוגה", defaultValue: 0 }),
         body: hebrewMarkdoc("הערות (אופציונלי)"),
       },
@@ -209,8 +209,8 @@ export default config({
       schema: {
         title: hebrewTitle("כותרת הפרק"),
         imageUrl: siteImage("תמונת כיסוי"),
-        imageAlt: fields.text({ label: "טקסט חלופי לתמונה" }),
-        youtubeUrl: fields.text({ label: "קישור לסרטון YouTube" }),
+        imageAlt: fields.text({ label: "טקסט חלופי לתמונה", defaultValue: "" }),
+        youtubeUrl: fields.text({ label: "קישור לסרטון YouTube", defaultValue: "" }),
         order: fields.integer({ label: "סדר תצוגה", defaultValue: 0 }),
         body: hebrewMarkdoc("הערות (אופציונלי)"),
       },

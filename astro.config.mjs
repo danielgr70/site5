@@ -9,6 +9,10 @@ import keystatic from "@keystatic/astro";
 export default defineConfig({
   output: "hybrid",
   adapter: cloudflare(),
+  redirects: {
+    "/admin": "/keystatic",
+    "/admin/[...path]": "/keystatic/[...path]",
+  },
   integrations: [
     react(),
     markdoc(),
