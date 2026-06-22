@@ -18,5 +18,5 @@ export default defineConfig({
     markdoc(),
     keystatic(),
     tailwind({ applyBaseStyles: false }),
-  ],
+  ], 
 });
