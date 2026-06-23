@@ -92,15 +92,105 @@
     }
   }
 
+  function getPublishToken() {
+    var meta = document.querySelector('meta[name="keystatic-publish-token"]');
+    return meta ? meta.getAttribute("content") : null;
+  }
+
+  function mountPublishButton() {
+    var btn = document.getElementById("keystatic-publish-btn");
+    var status = document.getElementById("keystatic-publish-status");
+    if (!btn || !status || btn._publishBound) return;
+
+    var token = getPublishToken();
+    btn._publishBound = true;
+    btn.textContent = "\u05E4\u05E8\u05E1\u05D5\u05DD \u05DC\u05D0\u05EA\u05E8";
+    if (!token) {
+      btn.disabled = true;
+      status.hidden = false;
+      status.className = "keystatic-publish-status is-error";
+      // "פרסום לא מוגדר בשרת"
+      status.textContent =
+        "\u05E4\u05E8\u05E1\u05D5\u05DD \u05DC\u05D0 \u05DE\u05D5\u05D2\u05D3\u05E8 \u05D1\u05E9\u05E8\u05EA";
+      return;
+    }
+
+    btn.addEventListener("click", function () {
+      // "לפרסם את האתר? השינויים שנשמרו יופיעו בקרוב."
+      if (
+        !window.confirm(
+          "\u05DC\u05E4\u05E8\u05E1\u05DD \u05D0\u05EA \u05D4\u05D0\u05EA\u05E8? \u05D4\u05E9\u05D9\u05E0\u05D5\u05D9\u05D9\u05DD \u05E9\u05E0\u05E9\u05DE\u05E8\u05D5 \u05D9\u05D5\u05E4\u05D9\u05E2\u05D5 \u05D1\u05E7\u05E8\u05D5\u05D1.",
+        )
+      ) {
+        return;
+      }
+
+      btn.disabled = true;
+      status.hidden = false;
+      status.className = "keystatic-publish-status";
+      // "מפרסם..."
+      status.textContent = "\u05DE\u05E4\u05E8\u05E1\u05DD...";
+
+      fetch("/api/publish", {
+        method: "POST",
+        headers: { "X-Publish-Token": token },
+      })
+        .then(function (response) {
+          return response.json().then(function (body) {
+            return { ok: response.ok, body: body };
+          });
+        })
+        .then(function (result) {
+          if (result.ok) {
+            status.className = "keystatic-publish-status is-success";
+            // "האתר מתפרסם. זה לוקח כמה דקות."
+            status.textContent =
+              "\u05D4\u05D0\u05EA\u05E8 \u05DE\u05EA\u05E4\u05E8\u05E1\u05DD. \u05D6\u05D4 \u05DC\u05D5\u05E7\u05D7 \u05DB\u05DE\u05D4 \u05D3\u05E7\u05D5\u05EA.";
+            return;
+          }
+          status.className = "keystatic-publish-status is-error";
+          status.textContent =
+            (result.body && result.body.error) ||
+            "\u05E9\u05D2\u05D9\u05D0\u05D4 \u05D1\u05E4\u05E8\u05E1\u05D5\u05DD";
+        })
+        .catch(function () {
+          status.className = "keystatic-publish-status is-error";
+          status.textContent = "\u05E9\u05D2\u05D9\u05D0\u05D4 \u05D1\u05E4\u05E8\u05E1\u05D5\u05DD";
+        })
+        .finally(function () {
+          btn.disabled = false;
+        });
+    });
+  }
+
+  function ensurePublishUi() {
+    mountPublishButton();
+    if (!document.getElementById("keystatic-publish-bar")) {
+      var bar = document.createElement("div");
+      bar.id = "keystatic-publish-bar";
+      bar.className = "keystatic-publish-bar";
+      bar.innerHTML =
+        '<button type="button" id="keystatic-publish-btn" class="keystatic-publish-btn">\u05E4\u05E8\u05E1\u05D5\u05DD \u05DC\u05D0\u05EA\u05E8</button>' +
+        '<p id="keystatic-publish-status" class="keystatic-publish-status" hidden role="status"></p>';
+      document.body.appendChild(bar);
+      mountPublishButton();
+    }
+  }
+
   function boot() {
     scan();
-    new MutationObserver(scan).observe(document.documentElement, {
+    ensurePublishUi();
+    new MutationObserver(function () {
+      scan();
+      ensurePublishUi();
+    }).observe(document.documentElement, {
       childList: true,
       subtree: true,
     });
     var attempts = 0;
     var timer = setInterval(function () {
       scan();
+      ensurePublishUi();
       if (++attempts >= 120) clearInterval(timer);
     }, 250);
     window.addEventListener("astro:hydrate", scan);
