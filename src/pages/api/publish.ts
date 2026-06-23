@@ -1,11 +1,10 @@
 import type { APIRoute } from "astro";
+import { getDeployHookUrl, getPublishToken } from "../../lib/publish-env";
 
 export const prerender = false;
 
-export const POST: APIRoute = async ({ request }) => {
-  const expectedToken =
-    import.meta.env.PUBLISH_API_TOKEN ??
-    (import.meta.env.DEV ? "dev-local-publish" : "");
+export const POST: APIRoute = async ({ request, locals }) => {
+  const expectedToken = getPublishToken(locals);
   if (!expectedToken) {
     return Response.json(
       { error: "Publish API is not configured (missing PUBLISH_API_TOKEN)." },
@@ -18,7 +17,7 @@ export const POST: APIRoute = async ({ request }) => {
     return Response.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const hookUrl = import.meta.env.CLOUDFLARE_DEPLOY_HOOK_URL;
+  const hookUrl = getDeployHookUrl(locals);
   if (!hookUrl) {
     if (import.meta.env.DEV) {
       return Response.json({

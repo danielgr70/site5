@@ -1,4 +1,5 @@
 import { defineMiddleware } from "astro:middleware";
+import { getPublishToken } from "./lib/publish-env";
 import slugHideCss from "./styles/keystatic-admin.css?raw";
 
 const STYLE_TAG = `<style id="keystatic-hide-slug">${slugHideCss}</style>`;
@@ -33,9 +34,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
     return new Response(html, { status: response.status, headers: response.headers });
   }
 
-  const publishToken =
-    import.meta.env.PUBLISH_API_TOKEN ??
-    (import.meta.env.DEV ? "dev-local-publish" : "");
+  const publishToken = getPublishToken(context.locals);
   const publishMeta = publishToken
     ? `<meta name="keystatic-publish-token" content="${escapeHtml(publishToken)}">`
     : `<meta name="keystatic-publish-token" content="">`;
