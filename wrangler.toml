@@ -1,7 +1,0 @@
-name = "orit-grossztein"
-compatibility_date = "2024-09-23"
-pages_build_output_dir = "dist"
-
-# Set in Cloudflare Pages dashboard (Settings → Environment variables):
-# PUBLISH_API_TOKEN, CLOUDFLARE_DEPLOY_HOOK_URL
-# + Keystatic vars when using GitHub mode
