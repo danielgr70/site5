@@ -4,10 +4,6 @@ import slugHideCss from "./styles/keystatic-admin.css?raw";
 
 const STYLE_TAG = `<style id="keystatic-hide-slug">${slugHideCss}</style>`;
 const SCRIPT_TAG = `<script src="/keystatic-admin.js" defer></script>`;
-const PUBLISH_BAR = `<div id="keystatic-publish-bar" class="keystatic-publish-bar">
-  <button type="button" id="keystatic-publish-btn" class="keystatic-publish-btn">\u05E4\u05E8\u05E1\u05D5\u05DD \u05DC\u05D0\u05EA\u05E8</button>
-  <p id="keystatic-publish-status" class="keystatic-publish-status" hidden role="status"></p>
-</div>`;
 
 function escapeHtml(value: string): string {
   return value
@@ -44,15 +40,9 @@ export const onRequest = defineMiddleware(async (context, next) => {
     ? html.replace("</head>", `${headInjection}</head>`)
     : `${headInjection}${html}`;
 
-  if (!patched.includes('id="keystatic-publish-bar"')) {
-    patched = patched.includes("</body>")
-      ? patched.replace("</body>", `${PUBLISH_BAR}${SCRIPT_TAG}</body>`)
-      : `${patched}${PUBLISH_BAR}${SCRIPT_TAG}`;
-  } else {
-    patched = patched.includes("</body>")
-      ? patched.replace("</body>", `${SCRIPT_TAG}</body>`)
-      : `${patched}${SCRIPT_TAG}`;
-  }
+  patched = patched.includes("</body>")
+    ? patched.replace("</body>", `${SCRIPT_TAG}</body>`)
+    : `${patched}${SCRIPT_TAG}`;
 
   return new Response(patched, {
     status: response.status,

@@ -97,6 +97,37 @@
     return meta ? meta.getAttribute("content") : null;
   }
 
+  function isKeystaticLoginScreen() {
+    if (
+      document.querySelector(
+        'a[href*="/api/keystatic/github/login"], a[href*="github.com/login/oauth"]',
+      )
+    ) {
+      return true;
+    }
+
+    var nodes = document.querySelectorAll("button, a");
+    for (var i = 0; i < nodes.length; i++) {
+      if (/log in with github/i.test((nodes[i].textContent || "").trim())) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  function isKeystaticAuthenticated() {
+    if (isKeystaticLoginScreen()) return false;
+    if (document.querySelector("#item-edit-form, #item-create-form")) return true;
+    if (document.querySelector('[href*="/keystatic/collection"]')) return true;
+    return false;
+  }
+
+  function removePublishUi() {
+    var bar = document.getElementById("keystatic-publish-bar");
+    if (bar) bar.remove();
+  }
+
   function mountPublishButton() {
     var btn = document.getElementById("keystatic-publish-btn");
     var status = document.getElementById("keystatic-publish-status");
@@ -164,6 +195,11 @@
   }
 
   function ensurePublishUi() {
+    if (!isKeystaticAuthenticated()) {
+      removePublishUi();
+      return;
+    }
+
     mountPublishButton();
     if (!document.getElementById("keystatic-publish-bar")) {
       var bar = document.createElement("div");
