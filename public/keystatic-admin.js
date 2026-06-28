@@ -118,8 +118,12 @@
 
   function isKeystaticAuthenticated() {
     if (isKeystaticLoginScreen()) return false;
+
+    var path = window.location.pathname;
+    if (/\/keystatic\/setup(?:\/|$)/.test(path)) return false;
+    if (/\/keystatic\/branch\//.test(path)) return true;
+
     if (document.querySelector("#item-edit-form, #item-create-form")) return true;
-    if (document.querySelector('[href*="/keystatic/collection"]')) return true;
     return false;
   }
 
@@ -213,6 +217,29 @@
     }
   }
 
+  function watchKeystaticNavigation() {
+    var lastPath = window.location.pathname;
+
+    function onRouteChange() {
+      if (window.location.pathname === lastPath) return;
+      lastPath = window.location.pathname;
+      ensurePublishUi();
+    }
+
+    window.addEventListener("popstate", onRouteChange);
+
+    var pushState = history.pushState;
+    var replaceState = history.replaceState;
+    history.pushState = function () {
+      pushState.apply(history, arguments);
+      onRouteChange();
+    };
+    history.replaceState = function () {
+      replaceState.apply(history, arguments);
+      onRouteChange();
+    };
+  }
+
   function boot() {
     scan();
     ensurePublishUi();
@@ -229,6 +256,7 @@
       ensurePublishUi();
       if (++attempts >= 120) clearInterval(timer);
     }, 250);
+    watchKeystaticNavigation();
     window.addEventListener("astro:hydrate", scan);
   }
 
