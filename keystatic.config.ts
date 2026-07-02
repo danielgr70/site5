@@ -77,29 +77,12 @@ export default config({
       label: "שירותים",
       slugField: "title",
       path: "src/content/services/*",
-      format: { contentField: "body" },
-      columns: ["order"],
+      columns: ["title"],
       schema: {
         title: hebrewTitle("כותרת"),
         iconUrl: siteImage("אייקון"),
         iconAlt: fields.text({ label: "טקסט חלופי לאייקון", defaultValue: "" }),
-        iconClass: fields.text({ label: "מחלקת CSS לאייקון (אופציונלי)" }),
-        iconWidth: fields.integer({
-          label: "רוחב אייקון (px)",
-          defaultValue: 72,
-          validation: { min: 1 },
-        }),
-        iconHeight: fields.integer({
-          label: "גובה אייקון (px)",
-          defaultValue: 72,
-          validation: { min: 1 },
-        }),
-        order: fields.integer({
-          label: "סדר תצוגה",
-          defaultValue: 0,
-        }),
-        animateDelay: fields.text({ label: "עיכוב אנימציה (אופציונלי)" }),
-        body: hebrewMarkdoc("תיאור"),
+        description: fields.text({ label: "תיאור", multiline: true }),
       },
     }),
     products: collection({
@@ -129,21 +112,12 @@ export default config({
       label: "אירועים",
       slugField: "title",
       path: "src/content/events/*",
-      format: { contentField: "body" },
       columns: ["order", "dateLabel"],
       schema: {
         title: hebrewTitle("כותרת"),
         dateLabel: fields.text({ label: "תאריך / מיקום (שורה עליונה)", defaultValue: "" }),
         imageUrl: siteImage("תמונה"),
         imageAlt: fields.text({ label: "טקסט חלופי לתמונה", defaultValue: "" }),
-        imageWidth: fields.integer({
-          label: "רוחב תמונה (px)",
-          defaultValue: 640,
-        }),
-        imageHeight: fields.integer({
-          label: "גובה תמונה (px)",
-          defaultValue: 360,
-        }),
         order: fields.integer({ label: "סדר תצוגה", defaultValue: 0 }),
         animateDelay: fields.text({ label: "עיכוב אנימציה (אופציונלי)" }),
         ctaText: fields.text({ label: "טקסט כפתור", defaultValue: "" }),
@@ -160,14 +134,13 @@ export default config({
         ctaGaEventId: fields.text({
           label: "מזהה אירוע Analytics (אופציונלי)",
         }),
-        body: hebrewMarkdoc("תיאור"),
+        description: fields.text({ label: "תיאור", multiline: true }),
       },
     }),
     reviews: collection({
       label: "המלצות",
       slugField: "name",
       path: "src/content/reviews/*",
-      format: { contentField: "body" },
       columns: ["order", "rating"],
       schema: {
         name: hebrewName("שם"),
@@ -179,7 +152,7 @@ export default config({
         }),
         photo: reviewProfilePhoto(),
         order: fields.integer({ label: "סדר תצוגה", defaultValue: 0 }),
-        body: hebrewMarkdoc("טקסט ההמלצה"),
+        text: fields.text({ label: "טקסט ההמלצה", multiline: true }),
       },
     }),
     customerVideos: collection({

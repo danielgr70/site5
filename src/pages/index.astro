@@ -24,7 +24,7 @@ const reviewEntries = (await getCollection("reviews")).sort(
 const reviews = reviewEntries.map((entry) => ({
     ...entry.data,
     id: entry.id,
-    text: entry.body.trim(),
+    text: entry.data.text.trim(),
 }));
 
 const customerVideoEntries = (await getCollection("customer-videos")).sort(
@@ -45,14 +45,28 @@ const podcastEpisodes = podcastEntries.map((entry) => ({
     id: entry.id,
 }));
 
+const SERVICE_ORDER = [
+    "personal-coaching",
+    "business-coaching",
+    "digital-courses",
+    "for-coaches",
+    "for-soldiers",
+    "digital-services",
+];
+
+const SERVICE_ICON_CLASS: Record<string, string> = {
+    "digital-services": "service-icon-digital",
+    "for-soldiers": "mt-3",
+};
+
 const serviceEntries = (await getCollection("services")).sort(
-    (a, b) => a.data.order - b.data.order
+    (a, b) => SERVICE_ORDER.indexOf(a.id) - SERVICE_ORDER.indexOf(b.id),
 );
 
 const services = serviceEntries.map((entry) => ({
     ...entry.data,
     id: entry.id,
-    description: entry.body.trim(),
+    description: entry.data.description.trim(),
 }));
 
 const productEntries = (await getCollection("products")).sort(
@@ -72,7 +86,7 @@ const eventEntries = (await getCollection("events")).sort(
 const events = eventEntries.map((entry) => ({
     ...entry.data,
     id: entry.id,
-    description: entry.body.trim(),
+    description: entry.data.description.trim(),
 }));
 
 function buildGaParams(placement, eventId) {
@@ -440,16 +454,13 @@ function getInitials(name) {
                             <div
                                 class="ts-item"
                                 data-animate="ts-fadeInUp"
-                                {...(item.animateDelay ? { "data-delay": item.animateDelay } : {})}
                             >
                                 <div class="ts-item-content service-card">
                                     <div class="ts-item-header">
                                         <figure class="icon">
                                             <img
                                                 src={item.iconUrl}
-                                                width={item.iconWidth}
-                                                height={item.iconHeight}
-                                                class={item.iconClass || undefined}
+                                                class={SERVICE_ICON_CLASS[item.id] || undefined}
                                                 alt={item.iconAlt}
                                                 loading="lazy"
                                             />
@@ -599,8 +610,6 @@ function getInitials(name) {
                                         src={event.imageUrl}
                                         alt={event.imageAlt}
                                         loading="lazy"
-                                        width={event.imageWidth}
-                                        height={event.imageHeight}
                                     />
                                 </div>
                                 <div class="events-v1-card-body card-body flex flex-col flex-grow min-h-0">

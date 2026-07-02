@@ -54,7 +54,7 @@ function resolveReviewPhotoUrl(photo: unknown, legacyUrl?: string): string {
 }
 
 const reviews = defineCollection({
-  type: "content",
+  type: "data",
   schema: z
     .object({
       name: hebrewString(),
@@ -63,6 +63,7 @@ const reviews = defineCollection({
       photo: z.any().optional(),
       photoUrl: z.string().optional().default(""),
       order: z.number().int().default(0),
+      text: z.string().default(""),
     })
     .transform((data) => {
       const { photo, photoUrl: legacy, ...rest } = data;
@@ -96,16 +97,12 @@ const podcast = defineCollection({
 });
 
 const services = defineCollection({
-  type: "content",
+  type: "data",
   schema: z.object({
     title: hebrewString(),
     iconUrl: assetPath(),
     iconAlt: z.string().default(""),
-    iconClass: z.string().optional().default(""),
-    iconWidth: z.number().int().positive().default(72),
-    iconHeight: z.number().int().positive().default(72),
-    order: z.number().int().default(0),
-    animateDelay: z.string().optional().default(""),
+    description: z.string().default(""),
   }),
 });
 
@@ -126,14 +123,12 @@ const products = defineCollection({
 });
 
 const events = defineCollection({
-  type: "content",
+  type: "data",
   schema: z.object({
     title: hebrewString(),
     dateLabel: z.string().default(""),
     imageUrl: assetPath(),
     imageAlt: z.string().default(""),
-    imageWidth: z.number().int().positive().default(640),
-    imageHeight: z.number().int().positive().default(360),
     order: z.number().int().default(0),
     animateDelay: z.string().optional().default(""),
     ctaText: z.string().default(""),
@@ -142,6 +137,7 @@ const events = defineCollection({
     ctaGaEvent: z.string().optional().default(""),
     ctaGaPlacement: z.string().optional().default(""),
     ctaGaEventId: z.string().optional().default(""),
+    description: z.string().default(""),
   }),
 });
 

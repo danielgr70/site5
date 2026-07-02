@@ -2579,15 +2579,18 @@ E. Template Specific Elements
     overflow: hidden;
     position: relative;
     flex-shrink: 0;
+    width: 100%;
+    aspect-ratio: 1 / 1;
 }
 
 #latest-courses.events-grid-v1 .events-v1-card-image-wrap img {
+    position: absolute;
+    inset: 0;
     display: block;
     width: 100%;
     height: 100%;
-    min-height: 100%;
     object-fit: cover;
-    object-position: top center;
+    object-position: center center;
 }
 
 #latest-courses.events-grid-v1 .events-v1-date {
