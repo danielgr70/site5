@@ -1,6 +1,7 @@
 ---
 import { getCollection, getEntry } from "astro:content";
 import Layout from '../layouts/Layout.astro';
+import { cacheBustUrl } from "../utils/cacheBust";
 
 export const prerender = true;
 
@@ -25,6 +26,7 @@ const reviews = reviewEntries.map((entry) => ({
     ...entry.data,
     id: entry.id,
     text: entry.data.text.trim(),
+    photoUrl: cacheBustUrl(entry.data.photoUrl),
 }));
 
 const customerVideoEntries = (await getCollection("customer-videos")).sort(
@@ -34,6 +36,7 @@ const customerVideoEntries = (await getCollection("customer-videos")).sort(
 const customerVideos = customerVideoEntries.map((entry) => ({
     ...entry.data,
     id: entry.id,
+    imageUrl: cacheBustUrl(entry.data.imageUrl),
 }));
 
 const podcastEntries = (await getCollection("podcast")).sort(
@@ -43,6 +46,7 @@ const podcastEntries = (await getCollection("podcast")).sort(
 const podcastEpisodes = podcastEntries.map((entry) => ({
     ...entry.data,
     id: entry.id,
+    imageUrl: cacheBustUrl(entry.data.imageUrl),
 }));
 
 const SERVICE_ORDER = [
@@ -67,6 +71,7 @@ const services = serviceEntries.map((entry) => ({
     ...entry.data,
     id: entry.id,
     description: entry.data.description.trim(),
+    iconUrl: cacheBustUrl(entry.data.iconUrl),
 }));
 
 const productEntries = (await getCollection("products")).sort(
@@ -77,6 +82,7 @@ const products = productEntries.map((entry) => ({
     ...entry.data,
     id: entry.id,
     description: entry.body.trim(),
+    imageUrl: cacheBustUrl(entry.data.imageUrl),
 }));
 
 const eventEntries = (await getCollection("events")).sort(
@@ -87,6 +93,7 @@ const events = eventEntries.map((entry) => ({
     ...entry.data,
     id: entry.id,
     description: entry.data.description.trim(),
+    imageUrl: cacheBustUrl(entry.data.imageUrl),
 }));
 
 function buildGaParams(placement, eventId) {
@@ -117,6 +124,7 @@ if (!heroPopupEntry) {
 const heroPopup = {
     ...heroPopupEntry.data,
     description: heroPopupEntry.body.trim(),
+    imageUrl: cacheBustUrl(heroPopupEntry.data.imageUrl),
 };
 const heroPopupCtaGaParams = buildGaParams(heroPopup.ctaGaPlacement, undefined);
 
