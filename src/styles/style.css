@@ -2614,6 +2614,7 @@ E. Template Specific Elements
     line-height: 1.65;
     color: #475569;
     margin: 0;
+    white-space: pre-line;
 }
 
 #latest-courses.events-grid-v1 .events-v1-cta-wrap {
